@@ -251,7 +251,9 @@ export default function Home() {
 
   const overview = reportOverview(state);
   const currentReportPdf = reportPdf?.id === state.id && reportPdf.report === state.report ? reportPdf : null;
-  const reportPdfUrl = currentReportPdf?.url ?? null;
+  const reportPdfUrl = readOnly
+    ? demoSlug && selectedDemo?.report_pdf ? demoAssetUrl(demoSlug, selectedDemo.report_pdf) : null
+    : currentReportPdf?.url ?? null;
   const reportPdfError = currentReportPdf?.error ?? '';
   const reportPdfLoading = Boolean(!readOnly && state.id && state.report && !currentReportPdf);
   const completedStages = new Set(state.trace.filter(event => event.status === 'completed').map(event => event.action));
@@ -622,10 +624,10 @@ export default function Home() {
         {!state.experiments_planned.length && <Empty label="No meaningful small experiment was planned for this conjecture. Check the assessment for the reason." />}</section>}
 
       {active === 'Report' && <>
-        <div className="report-actions">{readOnly && demoSlug ? <a href={demoAssetUrl(demoSlug, 'report.md')} download>Download report Markdown</a> : <><button type="button" onClick={() => void downloadDemo()} disabled={!state.id || busy || state.status === 'running' || savingDemo}>{savingDemo ? 'Saving demo…' : 'Save demo ZIP'}</button><button type="button" onClick={downloadReport} disabled={!reportPdfUrl}>Download LaTeX PDF</button></>}</div>
+        <div className="report-actions">{readOnly && demoSlug ? <>{reportPdfUrl && <a href={reportPdfUrl} download>Download report PDF</a>}<a href={demoAssetUrl(demoSlug, 'report.md')} download>Download report Markdown</a></> : <><button type="button" onClick={() => void downloadDemo()} disabled={!state.id || busy || state.status === 'running' || savingDemo}>{savingDemo ? 'Saving demo…' : 'Save demo ZIP'}</button><button type="button" onClick={downloadReport} disabled={!reportPdfUrl}>Download LaTeX PDF</button></>}</div>
         <section id="full-report" className="report-layout">
           <article className="report-paper report-pdf-paper">
-            {!readOnly && reportPdfUrl ? <iframe className="report-pdf-preview" src={reportPdfUrl} title="Typeset investigation report PDF" />
+            {reportPdfUrl ? <iframe className="report-pdf-preview" src={reportPdfUrl} title="Typeset investigation report PDF" />
               : reportPdfLoading ? <p>Typesetting the report PDF…</p>
               : <><span className="eyebrow">Generated synthesis</span>
                   {!readOnly && reportPdfError && <p role="alert">PDF preview unavailable: {reportPdfError}</p>}

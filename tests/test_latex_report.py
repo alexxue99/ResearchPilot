@@ -16,7 +16,7 @@ class LatexReportTests(unittest.TestCase):
         self.assertIn('$x^2$', source)
         self.assertIn(r'\[\frac{a}{b} \leq 1\]', source)
         self.assertIn(r'\href{https://arxiv.org/abs/2401.12345}{Paper}', source)
-        self.assertIn(r'print("a\ \&\ b")', source)
+        self.assertIn(r'print("a\ \&\ b")', source.replace('\\allowbreak{}%\n', ''))
         self.assertIn('Does $x^2$ hold?', source)
 
     def test_unsafe_math_command_is_rendered_as_text(self):
@@ -53,8 +53,15 @@ class LatexReportTests(unittest.TestCase):
     def test_literal_dollars_and_code_remain_literal(self):
         source = markdown_to_latex(r'Pay \$5 or $10. Code: `$x_i$`.' + '\n\n```\n$0.5$\n```')
         self.assertIn(r'Pay \$5 or \$10.', source)
-        self.assertIn(r'\texttt{\$x\_i\$}', source)
-        self.assertIn(r'\$0.5\$', source)
+        self.assertIn(r'\texttt{\$x\_i\$}', source.replace('\\allowbreak{}%\n', ''))
+        self.assertIn(r'\$0.5\$', source.replace('\\allowbreak{}%\n', ''))
+
+    def test_long_code_wraps_without_allowing_tex_commands(self):
+        code = r'\input{private}' + '_' * 120
+        source = markdown_to_latex('```python\n' + code + '\n```')
+        self.assertGreater(source.count(r'\allowbreak{}'), 120)
+        self.assertNotIn(r'\input{private}', source)
+        self.assertIn(r'\textbackslash{}input\{private\}', source.replace('\\allowbreak{}%\n', ''))
 
 
 if __name__ == '__main__':

@@ -49,7 +49,7 @@ Provision weights separately. The adapter never implicitly downloads models or e
 
 ## PDF reports
 
-The web app can download a report as a LaTeX PDF. The API needs XeLaTeX and TeX Gyre fonts; the backend Dockerfile installs them. Markdown reports and demo ZIP exports work without a TeX installation. The backend image is separate from the executor image.
+The web app can download a report as a LaTeX PDF. The API needs XeLaTeX and TeX Gyre fonts; the backend Dockerfile installs them. Markdown reports work without a TeX installation. Demo ZIP exports automatically include a typeset PDF and require XeLaTeX; publishing an older Markdown-only snapshot also requires it. Once published, PDF reports are static frontend assets. The backend image is separate from the executor image.
 
 ## Prices and telemetry
 

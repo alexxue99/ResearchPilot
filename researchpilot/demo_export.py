@@ -9,8 +9,32 @@ import zipfile
 from pathlib import Path
 
 from .models import ResearchState, Status, utc_now
+from .latex_report import render_latex_pdf
 
 MAX_ARTIFACT_BYTES = 100_000_000
+
+
+def add_report_pdf(files: dict[str, bytes], question: str) -> bool:
+    """Typeset the portable report; reuse a PDF already included in a snapshot."""
+    if "report.pdf" in files:
+        if not files["report.pdf"].startswith(b"%PDF-"):
+            raise ValueError("The saved report.pdf is not a PDF document")
+        return False
+    files["report.pdf"] = render_latex_pdf(files["report.md"].decode("utf-8"), question)
+    return True
+
+
+def encode_demo(files: dict[str, bytes], metadata: dict) -> bytes:
+    """Refresh the manifest after adding assets and serialize a portable ZIP."""
+    manifest = {**metadata, "files": [
+        {"path": name, "bytes": len(content), "sha256": hashlib.sha256(content).hexdigest()}
+        for name, content in sorted(files.items()) if name != "manifest.json"]}
+    files["manifest.json"] = (json.dumps(manifest, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+        for name, content in sorted(files.items()):
+            archive.writestr(name, content)
+    return buffer.getvalue()
 
 
 def demo_bundle(state: ResearchState, workspace: str | Path) -> bytes:
@@ -69,6 +93,7 @@ def demo_bundle(state: ResearchState, workspace: str | Path) -> bytes:
     snapshot = portable(state.to_dict())
     files["state.json"] = json_bytes(snapshot)
     files["report.md"] = portable(state.report or "\n".join(state.plan)).encode("utf-8")
+    add_report_pdf(files, snapshot["question"])
     files["trace.json"] = json_bytes(snapshot["trace"])
     for index, design in enumerate(state.experiments_planned, 1):
         if design.code:
@@ -80,22 +105,16 @@ def demo_bundle(state: ResearchState, workspace: str | Path) -> bytes:
         "This is a saved investigation, not a live run. See manifest.json for its status and dates.\n"
         "state.json contains sources, evidence, designs, measurements, model usage and assessment.\n"
         "Artifact paths are relative to this bundle. Scripts are under experiments/.\n"
-        "Full paper PDFs, caches, databases and environment files are not included.\n"
+        "report.pdf is the precomputed typeset report; report.md is its portable source.\n"
+        "Unreferenced caches, databases and environment files are not included.\n"
         "Review the snapshot before publishing; research text may contain private information.\n"
         "Reproduction requires the dependencies and sandbox described in the repository README.\n"
     ).encode("utf-8")
-    files["manifest.json"] = json_bytes({
+    return encode_demo(files, portable({
         "schema_version": 1, "kind": "precomputed_demonstration", "research_id": state.id,
         "question": state.question, "status": str(state.status), "model": state.model,
         "created_at": state.created_at, "updated_at": state.updated_at, "exported_at": utc_now(),
-        "files": [{"path": name, "bytes": len(content), "sha256": hashlib.sha256(content).hexdigest()}
-                  for name, content in sorted(files.items())],
-    })
-    buffer = io.BytesIO()
-    with zipfile.ZipFile(buffer, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-        for name, content in sorted(files.items()):
-            archive.writestr(name, content)
-    return buffer.getvalue()
+    }))
 
 
 def save_demo(state: ResearchState, workspace: str | Path, destination: str | Path) -> Path:

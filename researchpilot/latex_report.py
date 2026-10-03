@@ -44,6 +44,20 @@ def _escape(value: str) -> str:
     return "".join(_SPECIAL.get(char, char) for char in value)
 
 
+def _code_text(value: str, *, preserve_spaces: bool = False) -> str:
+    # Escaped text stays inert; break opportunities keep long identifiers and JSON
+    # within the page margins without dropping characters from recorded code.
+    output = []
+    run = 0
+    for char in value:
+        output.append(r"\ " if char == " " and preserve_spaces else _escape(char))
+        run += 1
+        if char in ' ,;:/_-=)}]' or run >= 12:
+            output.append("\\allowbreak{}%\n")
+            run = 0
+    return "".join(output)
+
+
 def _math(value: str, display: bool = False) -> str:
     """Allow common math syntax while keeping arbitrary TeX commands out of the compiler."""
     commands = re.findall(r"\\([A-Za-z]+)", value)
@@ -52,7 +66,7 @@ def _math(value: str, display: bool = False) -> str:
             or any(env not in _MATH_ENVIRONMENTS for env in environments)
             or re.search(r"\\[^A-Za-z{}|,;! :.\\]", value)
             or value.count("{") != value.count("}")):
-        return r"\texttt{" + _escape(value) + "}"
+        return r"\texttt{" + _code_text(value) + "}"
     return (r"\[" + value + r"\]" if display else "$" + value + "$")
 
 
@@ -124,7 +138,7 @@ def _inline(children) -> str:
         elif kind == "strong_close": output.append("}")
         elif kind == "em_open": output.append(r"\emph{")
         elif kind == "em_close": output.append("}")
-        elif kind == "code_inline": output.append(r"\texttt{" + _escape(token.content) + "}")
+        elif kind == "code_inline": output.append(r"\texttt{" + _code_text(token.content) + "}")
         elif kind == "softbreak": output.append("\n")
         elif kind == "hardbreak": output.append(r"\\" + "\n")
         elif kind == "link_open":
@@ -167,7 +181,7 @@ def markdown_to_latex(markdown: str) -> str:
         elif kind in ("fence", "code_block"):
             output.append("\n{\\small\\ttfamily\\raggedright\n")
             for line in token.content.rstrip("\n").split("\n"):
-                output.append(r"\noindent " + _escape(line).replace(" ", r"\ ") + r"\par" + "\n")
+                output.append(r"\noindent " + _code_text(line, preserve_spaces=True) + r"\par" + "\n")
             output.append("}\n")
         elif kind == "blockquote_open": output.append("\n\\begin{quote}\n")
         elif kind == "blockquote_close": output.append("\\end{quote}\n")
@@ -186,8 +200,9 @@ def latex_source(markdown: str, question: str) -> str:
     return r"""\documentclass[11pt,a4paper]{article}
 \usepackage[margin=27mm,headheight=15pt]{geometry}
 \usepackage{fontspec,amsmath,amssymb,hyperref,xcolor,fancyhdr,enumitem}
-\setmainfont{TeX Gyre Pagella}
-\setsansfont{TeX Gyre Heros}
+\setmainfont{texgyrepagella-regular.otf}[BoldFont=texgyrepagella-bold.otf,ItalicFont=texgyrepagella-italic.otf,BoldItalicFont=texgyrepagella-bolditalic.otf]
+\setsansfont{texgyreheros-regular.otf}[BoldFont=texgyreheros-bold.otf,ItalicFont=texgyreheros-italic.otf,BoldItalicFont=texgyreheros-bolditalic.otf]
+\setmonofont{texgyrecursor-regular.otf}
 \definecolor{reportblue}{HTML}{234C66}
 \hypersetup{colorlinks=true,linkcolor=reportblue,urlcolor=reportblue,pdftitle={ResearchPilot Investigation Report}}
 \pagestyle{fancy}\fancyhf{}

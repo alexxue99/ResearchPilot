@@ -233,6 +233,10 @@ def create_app(workspace: str | Path | None = None, *, _scoped: bool = False):
             raise HTTPException(409, "Wait for queued jobs and reruns to finish before exporting")
         try:
             payload = demo_bundle(state, root)
+        except LatexUnavailable as exc:
+            raise HTTPException(503, str(exc)) from exc
+        except LatexRenderError as exc:
+            raise HTTPException(422, str(exc)) from exc
         except (ValueError, OSError) as exc:
             raise HTTPException(409, str(exc)) from exc
         return Response(payload, media_type="application/zip", headers={

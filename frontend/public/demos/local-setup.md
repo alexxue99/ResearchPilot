@@ -145,6 +145,11 @@ the outcome; a new run is not guaranteed to reproduce identical results.
 
 ## Save a result
 
+Demo ZIPs automatically include a typeset PDF. Install XeLaTeX and the TeX Gyre
+fonts on the backend machine (the supplied backend Docker image includes them).
+If the compiler is not on PATH, set `RESEARCHPILOT_XELATEX` to its executable.
+PDF generation happens locally; viewing published demos on Vercel needs no compiler.
+
 Open **Report → Save demo ZIP**, or export from the repository root:
 
 ```powershell
@@ -153,5 +158,5 @@ python -m researchpilot.cli export-demo RESEARCH_ID --output demos/my-result.zip
 ```
 
 A downloaded demo ZIP can also be inspected without executing code. Read
-`state.json`, `report.md`, and the experiment scripts and plots. It does not
+`report.pdf`, `state.json`, `report.md`, and the experiment scripts and plots. It does not
 restore a database or include a complete execution environment.

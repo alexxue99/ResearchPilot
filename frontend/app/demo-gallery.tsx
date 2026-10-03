@@ -1,6 +1,7 @@
 export interface DemoEntry {
   slug: string; title: string; summary: string; question: string;
   status: string; model: string; created_at: string; exported_at: string; experiments: number;
+  report_pdf?: string;
 }
 
 export function DemoGallery({demos, loading, error, onSelect}: {

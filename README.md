@@ -10,9 +10,9 @@ The frontend includes three saved investigations. Reviewers can inspect the conj
 
 | Demo | Conjecture being tested | Saved report |
 | --- | --- | --- |
-| Double descent | Increasing random Fourier features produces an interpolation peak in noisy regression, and ridge regularization reduces that peak. | [Report](frontend/public/demos/double-descent/report.md) |
-| Spurious correlations | A predictive shortcut improves in-distribution accuracy but harms generalization when its correlation reverses. | [Report](frontend/public/demos/spurious-correlations/report.md) |
-| Overfitting under label noise | Increasing training-set size narrows the gap between noisy-label training accuracy and clean test accuracy. | [Report](frontend/public/demos/overfitting-noise/report.md) |
+| Double descent | Increasing random Fourier features produces an interpolation peak in noisy regression, and ridge regularization reduces that peak. | [Report](frontend/public/demos/double-descent/report.pdf) |
+| Spurious correlations | A predictive shortcut improves in-distribution accuracy but harms generalization when its correlation reverses. | [Report](frontend/public/demos/spurious-correlations/report.pdf) |
+| Overfitting under label noise | Increasing training-set size narrows the gap between noisy-label training accuracy and clean test accuracy. | [Report](frontend/public/demos/overfitting-noise/report.pdf) |
 
 These are recorded investigations, including their limitations and inconclusive outcomes. A completed run does not mean the conjecture was confirmed. The label-noise demo distinguishes signed and absolute accuracy gaps because training and test labels have different noise levels.
 
@@ -61,7 +61,7 @@ python -m researchpilot.cli export-demo RESEARCH_ID --output demos/my-investigat
 python -m researchpilot.cli publish-demo demos/my-investigation.zip --slug my-investigation --title "My investigation" --summary "The conjecture and comparison being tested."
 ```
 
-Review the ZIP before publishing. `publish-demo` verifies its manifest and prepares gallery files under `frontend/public/demos/`; it does not deploy the website. Commit the curated ZIPs and prepared gallery assets. Existing filenames and slugs are protected from overwriting. See the [demo guide](demos/README.md) for the snapshot format and workflow.
+Demo export automatically includes a typeset `report.pdf` and requires XeLaTeX with the TeX Gyre fonts on the backend host. Review the ZIP before publishing. `publish-demo` verifies its manifest, typesets older snapshots that lack a PDF, and prepares gallery files under `frontend/public/demos/`; it does not deploy the website. Vercel serves the saved PDFs without a backend or LaTeX installation. Commit the curated ZIPs and prepared gallery assets. Existing ZIP filenames and gallery slugs are protected from overwriting by default; `publish-demo --replace` explicitly refreshes a gallery entry. See the [demo guide](demos/README.md) for the snapshot format and workflow.
 
 For Vercel, select `frontend` as the project root, use the Next.js preset, and set `NEXT_PUBLIC_RESEARCHPILOT_DEMO_ONLY=true` before building. Set `NEXT_PUBLIC_SITE_URL` to the public site URL. The curated gallery works without a deployed backend.
 

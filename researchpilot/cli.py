@@ -12,6 +12,7 @@ from .evaluation import BenchmarkRunner, evaluate_investigation, load_benchmark
 from .storage import ResearchRepository
 from .observability import TraceExporter
 from .environment import load_workspace_env
+from .latex_report import LatexRenderError, LatexUnavailable
 
 
 def main() -> None:
@@ -34,6 +35,7 @@ def main() -> None:
     publish.add_argument("--slug", required=True)
     publish.add_argument("--title", required=True)
     publish.add_argument("--summary", required=True)
+    publish.add_argument("--replace", action="store_true", help="replace an existing gallery snapshot after validation")
     evaluate = sub.add_parser("evaluate", help="score a completed investigation for grounding and experiment quality")
     evaluate.add_argument("research_id")
     sub.add_parser("benchmark", help="run historical tool-selection diagnostics (not a pipeline evaluation)")
@@ -48,8 +50,8 @@ def main() -> None:
     if args.command == "publish-demo":
         from .demo_publish import publish_demo
         try:
-            target = publish_demo(args.archive, args.slug, args.title, args.summary)
-        except (ValueError, OSError, KeyError, zipfile.BadZipFile) as exc:
+            target = publish_demo(args.archive, args.slug, args.title, args.summary, replace=args.replace)
+        except (ValueError, OSError, KeyError, zipfile.BadZipFile, LatexRenderError, LatexUnavailable) as exc:
             parser.error(str(exc))
         print(json.dumps({"demo": str(target)}, indent=2))
         return
@@ -93,7 +95,7 @@ def main() -> None:
             from .demo_export import save_demo
             try:
                 result["demo"] = str(save_demo(state, workspace, args.save_demo))
-            except (ValueError, OSError) as exc:
+            except (ValueError, OSError, LatexRenderError, LatexUnavailable) as exc:
                 parser.error(f"Investigation saved locally as {state.id}, but demo export failed: {exc}")
         print(json.dumps(result, indent=2))
     elif args.command == "export-demo":
@@ -108,7 +110,7 @@ def main() -> None:
                 parser.error("Wait for queued jobs and reruns to finish before exporting")
         try:
             target = save_demo(state, workspace, args.output)
-        except (ValueError, OSError) as exc:
+        except (ValueError, OSError, LatexRenderError, LatexUnavailable) as exc:
             parser.error(str(exc))
         print(json.dumps({"id": state.id, "demo": str(target)}, indent=2))
     elif args.command in ("show", "evaluate"):

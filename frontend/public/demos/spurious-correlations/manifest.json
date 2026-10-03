@@ -85,6 +85,11 @@
       "sha256": "2ccebe212a7af9b69debd5e198e8490ac2e9a7e98d0f2fc4f34ac4a730e3a3fe"
     },
     {
+      "path": "report.pdf",
+      "bytes": 94007,
+      "sha256": "0434e6169c95077e74ce1637f93b2367d3ffab80a2abbcba891bb5e7b2cb30c4"
+    },
+    {
       "path": "state.json",
       "bytes": 225289,
       "sha256": "068912e3c3333661c538fdaa62d64fba3d6b1d07d2df389e4f0490b5d7b67ced"

@@ -2,34 +2,42 @@ import hashlib
 import io
 import json
 import os
-import subprocess
 import sys
 import tempfile
 import unittest
 import zipfile
 from pathlib import Path
 from unittest.mock import patch
+from contextlib import redirect_stdout
 
 from researchpilot.demo_export import demo_bundle, save_demo
 from researchpilot.models import ExperimentDesign, ExperimentResult, ExperimentalEvidence, ResearchState, Status
 
 
 class DemoExportTests(unittest.TestCase):
+    def setUp(self):
+        self.pdf = b'%PDF-1.7\nfixture typeset report\n%%EOF\n'
+        renderer = patch('researchpilot.demo_export.render_latex_pdf', return_value=self.pdf)
+        self.renderer = renderer.start()
+        self.addCleanup(renderer.stop)
+
     def test_cli_save_and_export_existing_run(self):
+        from researchpilot.cli import main
+        def cli(*args):
+            output = io.StringIO()
+            with patch.object(sys, 'argv', ['researchpilot', *args]), redirect_stdout(output):
+                main()
+            return json.loads(output.getvalue())
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp) / 'runtime'
             first = Path(tmp) / 'demos' / 'first.zip'
-            command = [sys.executable, '-m', 'researchpilot.cli', '--workspace', str(root)]
-            run = subprocess.run([*command, 'research', 'Every prime number is odd.',
-                '--plan-only', '--provider', 'deterministic', '--save-demo', str(first)],
-                capture_output=True, text=True, check=True)
-            metadata = json.loads(run.stdout)
+            command = ['--workspace', str(root)]
+            metadata = cli(*command, 'research', 'Every prime number is odd.',
+                '--plan-only', '--provider', 'deterministic', '--save-demo', str(first))
             self.assertTrue(first.is_file())
-            listed = subprocess.run([*command, 'list'], capture_output=True, text=True, check=True)
-            self.assertEqual(json.loads(listed.stdout)[0]['id'], metadata['id'])
+            self.assertEqual(cli(*command, 'list')[0]['id'], metadata['id'])
             second = Path(tmp) / 'demos' / 'second.zip'
-            subprocess.run([*command, 'export-demo', metadata['id'], '--output', str(second)],
-                capture_output=True, text=True, check=True)
+            cli(*command, 'export-demo', metadata['id'], '--output', str(second))
             with zipfile.ZipFile(second) as archive:
                 self.assertEqual(json.loads(archive.read('manifest.json'))['research_id'], metadata['id'])
 
@@ -59,6 +67,7 @@ class DemoExportTests(unittest.TestCase):
                 self.assertEqual(data['trace'][0]['outputs']['api_key'], '[REDACTED]')
                 self.assertEqual(data['trace'][0]['outputs']['output_tokens'], 23)
                 self.assertEqual(archive.read('experiments/01/experiment.py'), b'print(1)')
+                self.assertEqual(archive.read('report.pdf'), self.pdf)
                 manifest = json.loads(archive.read('manifest.json'))
                 self.assertEqual(manifest['kind'], 'precomputed_demonstration')
                 for entry in manifest['files']:
@@ -95,6 +104,7 @@ class DemoExportTests(unittest.TestCase):
                 payload = demo_bundle(state, root)
             with zipfile.ZipFile(io.BytesIO(payload)) as archive:
                 self.assertNotIn(b'sk-demo-secret-value', archive.read('report.md'))
+            self.assertNotIn('sk-demo-secret-value', self.renderer.call_args.args[0])
             with self.assertRaisesRegex(ValueError, 'outside'):
                 save_demo(state, root, root / 'demo.zip')
             target = save_demo(state, root, Path(tmp) / 'demo.zip')
@@ -124,6 +134,27 @@ class DemoExportTests(unittest.TestCase):
                     self.assertEqual(json.loads(archive.read('state.json'))['id'], state.id)
                 DurableJobQueue(root / 'jobs.sqlite').enqueue(state.id)
                 self.assertEqual(client.get(url, headers=headers).status_code, 409)
+
+    def test_pdf_failure_leaves_no_export_and_is_explained_by_api(self):
+        from researchpilot.latex_report import LatexUnavailable
+        from fastapi.testclient import TestClient
+        from researchpilot.api import create_app
+        from researchpilot.storage import ResearchRepository
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {
+                'RESEARCHPILOT_WORKERS': '0', 'RESEARCHPILOT_PROVIDER': 'deterministic',
+                'RESEARCHPILOT_MODE': 'Full', 'RESEARCHPILOT_API_TOKEN': ''}):
+            root = Path(tmp) / 'runtime'
+            state, _ = self.state(root)
+            self.renderer.side_effect = LatexUnavailable('XeLaTeX is required')
+            target = Path(tmp) / 'demo.zip'
+            with self.assertRaisesRegex(LatexUnavailable, 'XeLaTeX'):
+                save_demo(state, root, target)
+            self.assertFalse(target.exists())
+            ResearchRepository(root / 'researchpilot.db').save(state)
+            with TestClient(create_app(root)) as client:
+                response = client.get(f'/research/{state.id}/demo.zip')
+            self.assertEqual(response.status_code, 503)
+            self.assertIn('XeLaTeX', response.json()['detail'])
 
 
 if __name__ == '__main__':

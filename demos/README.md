@@ -6,7 +6,7 @@ runtime cleanup.
 
 In the local web app, finish an investigation, open **Report**, and click
 **Save demo ZIP**. Move the downloaded ZIP here with a descriptive filename.
-This download works without a LaTeX installation.
+Demo export automatically typesets `report.pdf` using XeLaTeX. Install XeLaTeX and the TeX Gyre fonts on the backend host, or use the supplied backend Docker image. If typesetting fails, the export reports the error and preserves the local investigation.
 
 Alternatively, export a saved run from the repository root:
 
@@ -30,7 +30,8 @@ Each ZIP includes:
 
 - `manifest.json`: schema version, run/model/status/date metadata and file SHA-256 hashes.
 - `state.json`: sources, recorded evidence, experiment designs/results, model usage and assessment.
-- `report.md` and `trace.json`: readable report and investigation trace.
+- `report.pdf`: precomputed typeset report for the gallery and offline reading.
+- `report.md` and `trace.json`: report source and investigation trace.
 - `experiments/`: generated experiment and visualization scripts.
 - `artifacts/`: referenced measurements, manifests and plots, using portable relative paths.
 
@@ -50,12 +51,20 @@ python -m researchpilot.cli publish-demo demos/double-descent.zip --slug double-
 
 This verifies the file hashes, prepares static files in
 `frontend/public/demos/double-descent/`, and adds a card to `catalog.json`.
-It prepares local website assets; it does not deploy the website. Existing demo
-slugs are not overwritten. Use a new slug when publishing another version.
+It prepares local website assets; it does not deploy the website. New snapshots
+reuse their included PDF. Older Markdown-only ZIPs are automatically typeset
+before publication, and the downloadable gallery ZIP gets the PDF and an updated
+manifest. Those older source ZIPs remain unchanged. XeLaTeX is only needed on
+the publishing machine when the input lacks a PDF; Vercel serves the saved files.
+
+Existing demo slugs are protected by default. To refresh a published snapshot,
+repeat the command with `--replace`. Validation and PDF generation happen before
+the old gallery files are replaced. Use a new slug to keep both versions.
 
 The gallery opens snapshots in the existing investigation tabs, with read-only
-experiment code, static plots, a Markdown report and trace. A direct link such as
-`/?demo=double-descent` opens the selected demo. Visitors can download its original
+experiment code, static plots, a PDF report and trace. Markdown remains available
+for download and as a fallback for older gallery entries without PDFs. A direct link such as
+`/?demo=double-descent` opens the selected demo. Visitors can download its portable
 ZIP or the local setup guide. The repository includes three recorded investigations: double descent, spurious
 correlations, and overfitting under label noise.
 
