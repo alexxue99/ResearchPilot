@@ -1,0 +1,100 @@
+[
+  {
+    "kind": "statement",
+    "text": "proof in  Appendix       A.1.                                                         almost  at  the  order  of O(NK2)  –  recall  N   is  the  number",
+    "page": 4,
+    "start": 3486,
+    "end": 3637
+  },
+  {
+    "kind": "statement",
+    "text": "Lemma  1  (Invariant  property  of  peer  loss  [24]).    Peer  loss                  of  training  examples and K  is  the  number of  classes.   Even\nis invariant to class-dependent label noise:                                          though  we  can  roughly  estimate T(X),  applying  element-\n E ~D[1PL(f(X),~Y)] = (1− e+− e− )ED∗[1PL(f(X),Y∗)].  (1)                             wise   correction   relying   on   the   estimated T(X)   may   ac-\n                                                                                      cumulate  errors.    Therefore,  to  achieve  the  transformation\n   Then  we  discuss  the  effect  of  IDN.  Without  loss  of  gen-                  from  the  instance-dependent  to  the  easier  class-dependent,\nerality,   consider   a   case   where   noisy   examples   are   drawn               we need to resort to other statistical  properties ofT(X).\nfrom  two  noisy  distributions ~DI  and ~DII,  and  the  noise  rate\nof  ~DII   is  higher  than  ~DI,  i.e.  e+,II + e−,II > e+,I + e−,I,                 4. Covariance-Assisted Learning  (CAL)\nwhere e+,I  (II)  := P~DI (II)(~Y  = −1|Y ∗  = +1).    Assume  a                          From the  analyses in Section          3.3, we know the instance-\nparticular  setting  of  IDN  that  the  noise  is  class-dependent                   dependent  label  noise  will  “automatically”  assign  differe   nt\n(but  not  instance-dependent) only  within  each  distribution,                      weights  to  examples  with  different  noise  rates,  thus  cause\nand different between two distributions, i.e.  part-dependent                         imbalances.     When   the   optimal   solution   does   not   change\n[40].   Let D∗I    and D∗II  be  the  Bayes  optimal  distribution  re-               under such down-weighting effects, the  ﬁrst-order statist  ics\nlated  to ~DI  and ~DII.   For  simplicity,  we  write P((X,Y ∗) ∼                    based  on  peer  loss  [5,    24]  work  well.   However,  for  a  more\nD∗I(II)|(X,Y ∗) ∼ D∗)  as P(D∗I(II)).   Then P(D∗I ) = P(~DI)                         robust and general solution, using additional information to\nand P(D∗II) = P(~DII).   Note P(~DI)e+,I +P(~DII)e+,II = e+                           “balance” the effective weights of different examples is ne   c-\nand P(~DI)e−,I +P(~DII)e−,II = e−.  Then  we  have  the  fol-                         essary.    Although  the  Bayes  optimal  distribution  is  not  ac-\nlowing equality:                                                                      cessible  in  real  experiments,  we  ﬁrst  assume  its  existence\n                                                                                      for  theoretical  analyses  in  the  ideal  case,  then  we  will  dis-\n      E~D[1PL(f(X), ~Y)]                                                              cuss  the  gap  to  this  optimal  solution  when  we  can  only  use\n    =P(~DI)(1−e+,I −e−,I)ED∗I [1PL(f(X),Y ∗)]                                         a proxy ˆD  that can be constructed efﬁciently.",
+    "page": 4,
+    "start": 3638,
+    "end": 6715
+  },
+  {
+    "kind": "statement",
+    "text": "Theorem 2 (Decoupling binary IDN).   In binary classiﬁca-                             is given by\ntions, the expected peer loss with IDN writes  as:                                      ℓCAL(f(xn),˜yn) = ℓPL(f(xn),˜yn)",
+    "page": 5,
+    "start": 800,
+    "end": 1018
+  },
+  {
+    "kind": "statement",
+    "text": "Theorem                                                                            cannot  be  obtained  trivially,  and  only  imperfect  proxy con-\nbel  noise  into  two  parts.   As  shown  in  Eq.  (2),  the  ﬁrst  line             structions of  the  dataset  (denoted by ˆD)  could be  expected.\nis  the  same  as  Eq.  (1)  in  Lemma       1,  indicating  the  average             Detailed constructions of ˆD  are deferred to Section                4.2.1.\neffect  of  instance-dependent  label  noise  can  be  treated  as                    Advantages of using  covariance terms     There are several\na  class-dependent  one  with  parameters e+,e−.    The  addi-                        advantages  of   using   the   proposed  covariance  terms.     Un-\ntional two covariance terms in the second and the third lines                         like directly correcting labels according toD∗, the proposed\nof  Eq.  (2) characterize the  additional contribution of  exam-                      covariance  term  can  be  viewed  as  a  “soft”  correction  that\nples  due  to  their  differences  in  the  label  noise  rates.     The              maintains  the   information  encoded  in   both   original  noisy\ncovariance terms will become larger for a setting with more                           labels   and   the   estimated   Bayes   optimal   labels.      Keeping\ndiverse noise rates, capturing a more heterogeneous and un-                           both  information  is  beneﬁcial  as  suggested  in  [          13].   More-\ncertain learning environment.  Interested readers are also re-                        over,    compared   to   the   direct   loss   correction   approaches\nferred to the high-level intuitions for using covariance terms                        [30,   40,  41],   we   keep   the   original  learning   objective   and\nat the  end of Section      3.3.                                                      apply  “correction”  using  an  additional  term.     Our  method\n   We   now   brieﬂy   discuss   one   extension   of   Theorem              2        is   more   robust   in   practice   compared   to   these   direct   end-\nto   a K-class   classiﬁcation   task.       Following   the   assump-                to-end  loss  correction  approaches  due   to   two   reasons:    1)\ntion   adopted   in   [24],   we   consider   a   particular   setting   of           The covariance term summarizes the impact of the complex\nIDN  whose  the  expected  transition  matrix  satisﬁes  Ti,j  =                      noise  using  an  average  term,   indicating  that  our  approach\nTk,j, ∀i ⁄= j ⁄= k.    Denote  by ej  = Ti,j,∀i ⁄= j.    Corol-                       is  less  sensitive  to  the  estimation  precision  of  an  individual\nlary 1  decouples the effects of IDN in multi-class cases and                         example;  2)  As  will  be  shown  in  Section          4.3,  the  proposed\nis proved in Appendix         C.1.                                                    method is tolerant with  accessing an  imperfectD∗.\nCorollary  1  (Decoupling  multi-class  IDN).    In  multi-class                          Estimating the covariance terms relies on samples drawn\nclassiﬁcations, when the expected transition matrix satis ﬁes                         from  distribution D∗.   Thus,  we  need  to  construct  a  datasetˆD,   which  is   similar  or  unbiased  w.r.t.  D∗.     We   will  ﬁrst\nej = Ti,j = Tk,j, ∀i ⁄= j ⁄= k,  the  expected  peer  loss  with                      show the algorithm for constructing ˆD, then provide details\nIDN writes  as:                                                                       for DNN  implementations.",
+    "page": 5,
+    "start": 1563,
+    "end": 5274
+  },
+  {
+    "kind": "statement",
+    "text": "Theorem  4  (Imperfect  Covariance).    With  ˆDτ ,  when p∗ =                          where  the  cross-entropy  loss  is  tested  as  a  common  base-\n0.5, we  have                                                                           line.      Additionally,   the   generalized   cross-entropy   [50]   is\n                                                                                        compared  as   a   generalization  of   mean   absolute   error   and\n                                                                                        cross-entropy  designed  for   label  noise.     Popular  loss   cor-\n         E[1(˜f∗CAL-τ(X),Y ∗)] ≤ 4(1−τ)(ǫ+ +ǫ−)1−e+ −e−     .                           rection  based  methods [29,          40,  41],  sample  selection  based\n                                                                                        methods   [5,      12,  37,   46],   and   noise-robust   loss   functions\n                                                                                        [24,   43] are also chosen for comparisons.  All the compared",
+    "page": 7,
+    "start": 261,
+    "end": 1366
+  },
+  {
+    "kind": "statement",
+    "text": "Theorem      4  shows  the  quality  of  ˆDτ   controls  the  scale                 methods  adopt  similar  data  augmentations,  including  stan-\nof  the  worst-case  error  upper-bound.   Compared  with  The-                         dard random crop, random ﬂip, and normalization.  Note the\norem   1  where  no  covariance term  is  used,  we  know the  co-                      recent  work  on  part-dependent  label  noise  [40]  did  not  ap-\nvariance  terms  will  always  be   helpful  when τ  ∈  [0.5,1].                        ply  random  crop  and  ﬂip  on  the  CIFAR  dataset.   For  a  fair\nThat is,  the  training with  the assistance  of  covariance terms                      comparison  with  [40],   we   remove  the  corresponding  data\nwill  achieve  better  (worst-case)  accuracy  on  the  Bayes  op-                      augmentations  from  our  approach  and  defer  the  compari-\ntimal  distribution  when  the  construction  ˆDτ   is  better  than                    son  to  Appendix       D.3.   The  semi-supervised  learning  based\na  dataset  that  includes  each  instance  in D∗  randomly  with                       methods  with  extra  feature-extraction  and  data  augmenta-\n50% chance.                                                                             tions  are  not  included.   All  the  CIFAR  experiments  are  re-\n                                                                                        peated 5   times   with   independently  synthesized   IDN.   The\n5.  Experiments                                                                         highest accuracies on the  clean testing  dataset  are  averaged\n                                                                                        over 5  trials  to  show  the  best  generalization  ability  of  each\n    We  now present our experiment setups and results.                                  method.",
+    "page": 7,
+    "start": 1367,
+    "end": 3306
+  },
+  {
+    "kind": "statement",
+    "text": "Proof.   We  try to build the connection between noisy distribution ~D  and the underlying Bayes optimal distributionD∗  by the\nnoise ratese+  ande−.  The primary difference from the proof of Lemma 2  in [24] is the usage ofD∗.  Note:",
+    "page": 12,
+    "start": 64,
+    "end": 298
+  },
+  {
+    "kind": "statement",
+    "text": "Lemma 2.   Given the Bayes optimal distributionD∗,  the optimal peer classiﬁer deﬁned below:",
+    "page": 12,
+    "start": 1481,
+    "end": 1573
+  },
+  {
+    "kind": "statement",
+    "text": "Proof.   Recall Y ∗  is the Bayes optimal label deﬁned as",
+    "page": 12,
+    "start": 2120,
+    "end": 2177
+  },
+  {
+    "kind": "statement",
+    "text": "Proof.   The covariance Cov(·,·) in this proof is taken over the Bayes optimal distributionD∗.  The following proof is built on\nthe result of Theorem  2, i.e.  Eq. (2).  First  note",
+    "page": 13,
+    "start": 926,
+    "end": 1107
+  },
+  {
+    "kind": "statement",
+    "text": "Proof.   The covariance Cov(·,·)  in this proof is taken over the Bayes optimal distributionD∗.  Recall",
+    "page": 14,
+    "start": 1515,
+    "end": 1618
+  },
+  {
+    "kind": "statement",
+    "text": "Proof.   From Theorem   2, we  know\n                                                                                                             ]\n                       E~D[1PL(f(X), ~Y)]− Cov(Z1(X),1(f(X),Y ∗))− Cov(Z2(X),1(f(X),−1))",
+    "page": 15,
+    "start": 1357,
+    "end": 1592
+  },
+  {
+    "kind": "statement",
+    "text": "Proof.   Recall τ  ∈  [0,1]  is   the   expected  ratio  (a.k.a.     probability)  of   correct  examples  in  ˆDτ ,   i.e.  τ  =  E[1{(X, ˆY)  ∈ˆDτ|(X,Y ∗) ∈ D∗}] = P((X, ˆY) ∼  ˆDτ|(X,Y ∗) ∼ D∗). With ˆDτ , the classiﬁer learned by minimizing the 0-1 CAL loss is",
+    "page": 15,
+    "start": 1721,
+    "end": 1985
+  },
+  {
+    "kind": "statement",
+    "text": "Proof.                                                                              [                       ]\n                              E~D[ℓPL(f(X), ~Y)] = E~D[ℓ(f(X), ~Y)]−E~DY              EDX[ℓ(f(Xp), ~Yp)]      .                                                                             (5)",
+    "page": 16,
+    "start": 912,
+    "end": 1213
+  }
+]

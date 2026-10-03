@@ -1,0 +1,67 @@
+# Python environments, caches, and packaging
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.tox/
+.nox/
+/.venv/
+/venv/
+/build/
+/dist/
+
+# Local credentials; retain the configuration templates
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Investigation state, including custom-workspace databases and SQLite sidecars
+/.researchpilot/
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+
+# Root-only generated outputs; curated demos contain their own artifacts/
+/output/
+/reports/
+/artifacts/
+/tmp/
+
+# Test coverage
+.coverage
+.coverage.*
+coverage.xml
+/htmlcov/
+/coverage/
+
+# Frontend dependencies and generated files
+/frontend/node_modules/
+/frontend/.next/
+/frontend/dist/
+/frontend/.vinext/
+/frontend/.wrangler/
+/frontend/out/
+/frontend/build/
+/frontend/outputs/
+/frontend/work/
+/frontend/.vercel/
+*.tsbuildinfo
+/frontend/next-env.d.ts
+
+# Editor, operating-system, and debug files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+*.swp
+*.swo
+*~

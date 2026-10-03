@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "kind": "precomputed_demonstration",
+  "research_id": "7d563209-8295-4692-8081-44ff8cf1ca9d",
+  "question": "For a fixed-size neural network trained on synthetic binary classification data with 20% randomly flipped training labels, increasing the training-set size reduces the gap between training accuracy and clean test accuracy",
+  "status": "completed",
+  "model": "openai:gpt-6.1-sol",
+  "created_at": "2026-10-03T21:33:53.237695+00:00",
+  "updated_at": "2026-10-03T21:40:09.269822+00:00",
+  "exported_at": "2026-10-03T21:40:54.841443+00:00",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 548,
+      "sha256": "246313068e227470c0deb4138049caa211818944758b90d21afd7499b51243a2"
+    },
+    {
+      "path": "artifacts/attempt-5732371c34d649f9ba6fa85173b64c87/7d563209-8295-4692-8081-44ff8cf1ca9d/experiments/run_bc567b9c9e39/result.json",
+      "bytes": 30491,
+      "sha256": "ccdd7d431a9d2e24446611310d7176f58b96c0d308f9790a14f55b73e8ee7c78"
+    },
+    {
+      "path": "artifacts/attempt-5732371c34d649f9ba6fa85173b64c87/7d563209-8295-4692-8081-44ff8cf1ca9d/experiments/visualization_8a996e4d6787/visualization.svg",
+      "bytes": 50452,
+      "sha256": "c1743a137d587dd4cae6b4842e5085bbd38dbc9b0b2e224e718faafa3a23e13e"
+    },
+    {
+      "path": "artifacts/cache/papers/54e97fb727a1ad800dd4c419f12236e3f83580e192c74b169072dec0583e700b.pdf",
+      "bytes": 1348139,
+      "sha256": "54e97fb727a1ad800dd4c419f12236e3f83580e192c74b169072dec0583e700b"
+    },
+    {
+      "path": "artifacts/cache/papers/54e97fb727a1ad800dd4c419f12236e3f83580e192c74b169072dec0583e700b.provenance.json",
+      "bytes": 216,
+      "sha256": "710930378a07d89d34f0dacb70d6d43d902e37a8039c9eac9450c72213d20c8c"
+    },
+    {
+      "path": "artifacts/cache/papers/54e97fb727a1ad800dd4c419f12236e3f83580e192c74b169072dec0583e700b.structure.json",
+      "bytes": 16097,
+      "sha256": "1baee811fa39cf7b48ca557b68b476ff1402a038a686790b765412c145ae97f4"
+    },
+    {
+      "path": "artifacts/cache/papers/849d2943c8d48e3754a74a597a7d155895f1e1e065bbccba723b24d0d7596f6f.pdf",
+      "bytes": 2016641,
+      "sha256": "849d2943c8d48e3754a74a597a7d155895f1e1e065bbccba723b24d0d7596f6f"
+    },
+    {
+      "path": "artifacts/cache/papers/849d2943c8d48e3754a74a597a7d155895f1e1e065bbccba723b24d0d7596f6f.provenance.json",
+      "bytes": 216,
+      "sha256": "1f819544de41f1f78d00fff4912217d4bb36c3090d50114277d7d4c9b09a2ff9"
+    },
+    {
+      "path": "artifacts/cache/papers/849d2943c8d48e3754a74a597a7d155895f1e1e065bbccba723b24d0d7596f6f.structure.json",
+      "bytes": 6241,
+      "sha256": "3d970e28c1aaf04cacd3a67af71b8bd59d20a5a50c92ef9e6977808e60846087"
+    },
+    {
+      "path": "artifacts/cache/papers/f6c6bbdfd73772a23d2c356892f8dbc2f983ce825aa530bc1c1f9524ddd3c8c8.pdf",
+      "bytes": 338021,
+      "sha256": "f6c6bbdfd73772a23d2c356892f8dbc2f983ce825aa530bc1c1f9524ddd3c8c8"
+    },
+    {
+      "path": "artifacts/cache/papers/f6c6bbdfd73772a23d2c356892f8dbc2f983ce825aa530bc1c1f9524ddd3c8c8.provenance.json",
+      "bytes": 215,
+      "sha256": "796ea1519bbe1f9b6b7dcd321b456914fdef41a73cdaecdd48e3af9160efdf17"
+    },
+    {
+      "path": "artifacts/cache/papers/f6c6bbdfd73772a23d2c356892f8dbc2f983ce825aa530bc1c1f9524ddd3c8c8.structure.json",
+      "bytes": 13377,
+      "sha256": "7b69c9adbdb467b4d42b5af897f9e16bd7e1fda0926ed855c026ef72e9d0d979"
+    },
+    {
+      "path": "experiments/01/experiment.py",
+      "bytes": 16375,
+      "sha256": "c8d5f23dd7e70bb68741a54e6419286dde892c0f427aa165f185eb4789a09ec2"
+    },
+    {
+      "path": "experiments/01/visualization.py",
+      "bytes": 6932,
+      "sha256": "723b721925c54335ef16da622e14b4d0ede4884038a179788ba82dd18e281196"
+    },
+    {
+      "path": "report.md",
+      "bytes": 73076,
+      "sha256": "8ef16a30cba6416411810c784ab01146918a54731b2617811b5c653b0b0e3351"
+    },
+    {
+      "path": "state.json",
+      "bytes": 279135,
+      "sha256": "22d0de04492dafef383fda3cacd38f61fee79974ef02a6af1bf31c35f95a18df"
+    },
+    {
+      "path": "trace.json",
+      "bytes": 49740,
+      "sha256": "94ff4caad21ef2d62a1d24ac59f6c99a127d25fca825e7a0d40d9c75c3357ee1"
+    }
+  ]
+}

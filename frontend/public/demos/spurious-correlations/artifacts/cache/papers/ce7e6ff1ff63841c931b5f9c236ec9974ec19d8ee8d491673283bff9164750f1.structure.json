@@ -1,0 +1,37 @@
+[
+  {
+    "kind": "statement",
+    "text": "Proposition 3.  Undirected learning (full or sparse training) on biased data distributions causes\nthe model to be more biased towards training features with a larger proportion, bringing about\nsignificant performance differences in different data distributions, i.e.:\n                             Lood−Lid≈ (p2i−p2o)(1−ΣF⊤G)+ϵ> 0,                                       (7)\nwhereϵ is the difference of initial feature projections between ID and out-domain data due to model\ninitialization error. The full proof of Eq. 7 is provided in Appendix A.2.",
+    "page": 5,
+    "start": 1418,
+    "end": 1965
+  },
+  {
+    "kind": "statement",
+    "text": "Proof ofLemma.1. As mentioned earlier, the projection space before the model sparsity can be\nrepresented as:\n                                              mX\u0000piσiξiλ⊤i  +po˜σiξiγ⊤i     \u0001.                                            (13)\n                                     Er =\n                                             i=1\nSpecifically, SFP first performs SVD on the feature projections which maps input data to a set of\ncoordinates based on the orthogonal basis of model space. The matrices of left and right singular\nvectors correspond to thestandard orthogonal basis of themodel space and data space, respectively.\nThe matrix of singular values corresponds to the direction weight of the action vectors in the\nprojection matrix. SFP prunes the model by trimming the smallest singular values inΣ as well as\ntheir corresponding left and right singular vectors. In this way, SFP can remove the spurious features\ninIDdata spaceandsubstructuresinthe modelspacesimultaneouslyina spurious feature-targeted\nmanneralongthedirectionswithweakeractionsforprojection. Then,theprojectionspacewithonly\nthe most importantϑ singular values can be formalized as:",
+    "page": 7,
+    "start": 0,
+    "end": 1151
+  },
+  {
+    "kind": "statement",
+    "text": "Lemma 2.  Definee =|f∗(x)−f(x)| as the difference between true feature mapsf∗(x) andf(x).\nWhenη< 2e, SFP can effectively reduce the learning of the model towards spurious features while\nkeeping the performance on the same features.",
+    "page": 7,
+    "start": 2915,
+    "end": 3146
+  },
+  {
+    "kind": "statement",
+    "text": "Proof ofLemma.2: The prediction errors of feature projectionsLf can be defined as:",
+    "page": 7,
+    "start": 3148,
+    "end": 3230
+  },
+  {
+    "kind": "statement",
+    "text": "Proposition. 3, i.e., SFP can effectively filter out-domain instances by the task loss.\nBesides,WecanalsonoticethatthelossofIDinstances\nconvergestoofastintheERMalgorithm(i.e.,thered\nlinesin Fig.4) whiletheout-domain instancesremain\nlarge losses, which indicates that the ERM pays too\nmuch attention to the biased data, so the model tends\nto fitthe spurious featuresand ignore theinvariant fea-\ntures. Onthecontrary,intheproposedSFP,thedistance\nbetweenIDinstances’andout-domaininstances’losses\nis significantly reduced, indicating theeffectiveness of\nspurious feature-targeted pruning. More importantly,\nthe regularization termin our SFP neither slowsdown\nthe convergence speed nor negatively influences the                             Figure 4: Training loss visualization\nperformance of ID instances.",
+    "page": 9,
+    "start": 3181,
+    "end": 3982
+  }
+]

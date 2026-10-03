@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "kind": "precomputed_demonstration",
+  "research_id": "2c0c4240-b1db-4504-b222-03f8ea71112e",
+  "question": "For a binary classifier trained on synthetic data, adding a feature strongly correlated with the label during training improves in-distribution accuracy but reduces accuracy when that correlation reverses at test time",
+  "status": "completed",
+  "model": "openai:gpt-6.1-sol",
+  "created_at": "2026-10-03T21:27:47.122762+00:00",
+  "updated_at": "2026-10-03T21:32:31.169176+00:00",
+  "exported_at": "2026-10-03T21:33:01.317988+00:00",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 548,
+      "sha256": "246313068e227470c0deb4138049caa211818944758b90d21afd7499b51243a2"
+    },
+    {
+      "path": "artifacts/attempt-1317262852d9428abaa0eee8dfcb2f92/2c0c4240-b1db-4504-b222-03f8ea71112e/experiments/run_947bac4c6078/result.json",
+      "bytes": 13032,
+      "sha256": "26e8fd0bfb2a8df03d7f253d51878a9473e1e1291c99aef9c6fe52d02fab8498"
+    },
+    {
+      "path": "artifacts/attempt-1317262852d9428abaa0eee8dfcb2f92/2c0c4240-b1db-4504-b222-03f8ea71112e/experiments/visualization_e10d13c02bb6/visualization.svg",
+      "bytes": 12783,
+      "sha256": "5308877d5ad77074ceb24a6db4fa7411a98c01de1e9461f40ec124b41d8b4109"
+    },
+    {
+      "path": "artifacts/cache/papers/043202609893b28af1fdb0f0e477c1088f76e2ff25a7b032d4b54322aa5b21a0.pdf",
+      "bytes": 1400716,
+      "sha256": "043202609893b28af1fdb0f0e477c1088f76e2ff25a7b032d4b54322aa5b21a0"
+    },
+    {
+      "path": "artifacts/cache/papers/043202609893b28af1fdb0f0e477c1088f76e2ff25a7b032d4b54322aa5b21a0.provenance.json",
+      "bytes": 216,
+      "sha256": "ba7d4c98d0de089d125c553e2395d9bf16a4aca602acba5d5202ee700d4ff675"
+    },
+    {
+      "path": "artifacts/cache/papers/043202609893b28af1fdb0f0e477c1088f76e2ff25a7b032d4b54322aa5b21a0.structure.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "artifacts/cache/papers/ce7e6ff1ff63841c931b5f9c236ec9974ec19d8ee8d491673283bff9164750f1.pdf",
+      "bytes": 896974,
+      "sha256": "ce7e6ff1ff63841c931b5f9c236ec9974ec19d8ee8d491673283bff9164750f1"
+    },
+    {
+      "path": "artifacts/cache/papers/ce7e6ff1ff63841c931b5f9c236ec9974ec19d8ee8d491673283bff9164750f1.provenance.json",
+      "bytes": 215,
+      "sha256": "d04833530958feb4551c1682b99529d566f742d67c9cabc8fb5c69b97993e56f"
+    },
+    {
+      "path": "artifacts/cache/papers/ce7e6ff1ff63841c931b5f9c236ec9974ec19d8ee8d491673283bff9164750f1.structure.json",
+      "bytes": 3392,
+      "sha256": "5308e9b80565131578c71cd529c8a2535719be932bd1831f4b06ddaf09f2e742"
+    },
+    {
+      "path": "artifacts/cache/papers/ed62f3a36bd2179fe93b160892c6a8f915b6ab4586cc433161999c8a5a0bd20b.pdf",
+      "bytes": 19962581,
+      "sha256": "ed62f3a36bd2179fe93b160892c6a8f915b6ab4586cc433161999c8a5a0bd20b"
+    },
+    {
+      "path": "artifacts/cache/papers/ed62f3a36bd2179fe93b160892c6a8f915b6ab4586cc433161999c8a5a0bd20b.provenance.json",
+      "bytes": 217,
+      "sha256": "93fd522bae16665fe9a54dabe5941d9bba471b4391e3d298ab8b11a5902eb6ed"
+    },
+    {
+      "path": "artifacts/cache/papers/ed62f3a36bd2179fe93b160892c6a8f915b6ab4586cc433161999c8a5a0bd20b.structure.json",
+      "bytes": 5481,
+      "sha256": "15f014d2e93a6ef3826f1f22e60d8087ba714c4685a18c68f18f3f807e7815a3"
+    },
+    {
+      "path": "experiments/01/experiment.py",
+      "bytes": 8863,
+      "sha256": "fc0e549f3cd8e5eef7b783a14658fba87a66edd058b2a6da8256b95d18823c7e"
+    },
+    {
+      "path": "experiments/01/visualization.py",
+      "bytes": 4197,
+      "sha256": "c67750518454d1d03d91910c6ae3ff21ca87f593ddbd8937dfdd6ecd46b9300a"
+    },
+    {
+      "path": "report.md",
+      "bytes": 46979,
+      "sha256": "2ccebe212a7af9b69debd5e198e8490ac2e9a7e98d0f2fc4f34ac4a730e3a3fe"
+    },
+    {
+      "path": "state.json",
+      "bytes": 225289,
+      "sha256": "068912e3c3333661c538fdaa62d64fba3d6b1d07d2df389e4f0490b5d7b67ced"
+    },
+    {
+      "path": "trace.json",
+      "bytes": 47757,
+      "sha256": "25d4a472a23c96f7ddd43c47224e30d80a4a102806773149af76b26114aa091f"
+    }
+  ]
+}

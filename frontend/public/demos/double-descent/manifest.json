@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "precomputed_demonstration",
+  "research_id": "e094972d-69d2-4cd6-8c51-b590a204ac8a",
+  "question": "In noisy synthetic regression using random Fourier features, increasing the feature count produces a test-error peak near the interpolation threshold, and ridge regularization reduces that peak.",
+  "status": "completed",
+  "model": "openai:gpt-6.1-sol",
+  "created_at": "2026-10-03T21:07:44.667445+00:00",
+  "updated_at": "2026-10-03T21:13:56.825022+00:00",
+  "exported_at": "2026-10-03T21:15:57.025138+00:00",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 548,
+      "sha256": "246313068e227470c0deb4138049caa211818944758b90d21afd7499b51243a2"
+    },
+    {
+      "path": "artifacts/attempt-e7d0afcca22d44f1990face790d08d72/e094972d-69d2-4cd6-8c51-b590a204ac8a/experiments/run_df1c221f66ea/result.json",
+      "bytes": 66637,
+      "sha256": "e3790c6e0721ab93fbc7410a2f63138fbd74b34b7b69bc1257de1fdea623ad50"
+    },
+    {
+      "path": "artifacts/attempt-e7d0afcca22d44f1990face790d08d72/e094972d-69d2-4cd6-8c51-b590a204ac8a/experiments/visualization_16434a70e0c6/visualization.svg",
+      "bytes": 15917,
+      "sha256": "7909c343c929a79fbecbe9c4b0a70c3dcf97c8d13e64d23fa72473b2fd1b82f4"
+    },
+    {
+      "path": "experiments/01/experiment.py",
+      "bytes": 15461,
+      "sha256": "576cb7a4e77356dea4a9476c8f90cf057250561fd0660a2d4dd83e3edc4649ce"
+    },
+    {
+      "path": "experiments/01/visualization.py",
+      "bytes": 5262,
+      "sha256": "3095d0d265732b24a942499bfe8e92d988be5064df157490aa3387f651eb2161"
+    },
+    {
+      "path": "report.md",
+      "bytes": 86273,
+      "sha256": "75b79631d521aa7e88e2385b3a05f7ffa73d53944f6215a883e0edfeaf364ef0"
+    },
+    {
+      "path": "state.json",
+      "bytes": 351418,
+      "sha256": "caed032210807e24f8fe9a3c47c9ebdf223a673e6985e6b33a857ad5ac275971"
+    },
+    {
+      "path": "trace.json",
+      "bytes": 47588,
+      "sha256": "e708597d563a6bf50df54df1da6d6fab07bf73bc5f69fa1148c54be128a0cc71"
+    }
+  ]
+}

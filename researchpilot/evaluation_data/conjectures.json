@@ -1,0 +1,9 @@
+[
+  {"id":"nonnegative_square","statement":"For every real x, x squared is nonnegative.","category":"established_true","expected":"Direct proof from ordered-field axioms; finite samples alone are insufficient."},
+  {"id":"odd_primes","statement":"Every prime number is odd.","category":"known_counterexample","expected":"The prime number 2 is a direct counterexample; near-zero confidence."},
+  {"id":"gradient_descent","statement":"Gradient descent with a constant positive step size converges for every differentiable convex function.","category":"conditional","expected":"Surface smoothness, step-size, and minimizer assumptions or counterexamples."},
+  {"id":"collatz","statement":"Every positive integer eventually reaches 1 under the Collatz iteration.","category":"unresolved","expected":"Distinguish extensive computation from proof; avoid high confidence."},
+  {"id":"well_behaved","statement":"Most matrices are well behaved.","category":"too_vague","expected":"Identify missing distribution, size, and definition of well behaved."},
+  {"id":"kaczmarz_spectra","statement":"Randomized Kaczmarz becomes slower when singular values decay harmonically rather than remaining approximately flat.","category":"computationally_testable","expected":"Compare multiple spectral regimes and repeated seeds with matched controls; seek contrary regimes."},
+  {"id":"riemann","statement":"Every nontrivial zero of the Riemann zeta function has real part one half.","category":"not_meaningfully_testable_with_small_experiment","expected":"Finite numerical checks cannot meaningfully establish the universal conjecture."}
+]

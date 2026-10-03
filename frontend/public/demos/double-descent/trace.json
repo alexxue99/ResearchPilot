@@ -1,0 +1,628 @@
+[
+  {
+    "sequence": 1,
+    "action": "plan",
+    "status": "completed",
+    "summary": "Created the staged conjecture investigation plan.",
+    "inputs": {},
+    "outputs": {
+      "stages": [
+        "interpretation",
+        "ai_general_reasoning",
+        "additional_literature_search",
+        "evidence_extraction",
+        "experiment_planning",
+        "experiment_execution",
+        "evidence_synthesis",
+        "confidence_estimation",
+        "final_report"
+      ]
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:07:44.667526+00:00"
+  },
+  {
+    "sequence": 2,
+    "action": "paper_ingestion",
+    "status": "completed",
+    "summary": "Imported arXiv paper 1908.05355 with 157 passages.",
+    "inputs": {},
+    "outputs": {
+      "source_id": "arxiv:1908.05355",
+      "chunks": 157,
+      "warnings": [
+        "PDF layout extraction is heuristic; equations, columns, and scanned pages require human verification."
+      ]
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:08:04.332772+00:00"
+  },
+  {
+    "sequence": 3,
+    "action": "investigation",
+    "status": "completed",
+    "summary": "Conjecture investigation completed.",
+    "inputs": {},
+    "outputs": {},
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:08:04.425385+00:00"
+  },
+  {
+    "sequence": 4,
+    "action": "interpretation",
+    "status": "completed",
+    "summary": "Parsed conjecture and explicit assumptions.",
+    "inputs": {},
+    "outputs": {
+      "experimentable": true
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:08:41.172828+00:00"
+  },
+  {
+    "sequence": 5,
+    "action": "ai_general_reasoning",
+    "status": "completed",
+    "summary": "Recorded 0 unverified observations and 0 sources to review.",
+    "inputs": {},
+    "outputs": {
+      "observations": [],
+      "source_ids": []
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:09:15.609113+00:00"
+  },
+  {
+    "sequence": 6,
+    "action": "literature_search",
+    "status": "completed",
+    "summary": "Literature search (arXiv): Retrieved 8 arXiv records.",
+    "inputs": {
+      "tool": "arxiv_search",
+      "query": "random Fourier feature regression noisy labels double descent interpolation threshold test error minimum norm ridge regularization",
+      "limit": 8
+    },
+    "outputs": {
+      "category": "literature_search",
+      "sources": [
+        {
+          "id": "arxiv:2208.09897v3",
+          "title": "Multiple Descent in the Multiple Random Feature Model",
+          "authors": [
+            "Xuran Meng",
+            "Jianfeng Yao",
+            "Yuan Cao"
+          ],
+          "abstract": "Recent works have demonstrated a double descent phenomenon in over-parameterized learning. Although this phenomenon has been investigated by recent works, it has not been fully understood in theory. In this paper, we investigate the multiple descent phenomenon in a class of multi-component prediction models. We first consider a ''double random feature model'' (DRFM) concatenating two types of random features, and study the excess risk achieved by the DRFM in ridge regression. We calculate the precise limit of the excess risk under the high dimensional framework where the training sample size, the dimension of data, and the dimension of random features tend to infinity proportionally. Based on the calculation, we further theoretically demonstrate that the risk curves of DRFMs can exhibit triple descent. We then provide a thorough experimental study to verify our theory. At last, we extend our study to the ''multiple random feature model'' (MRFM), and show that MRFMs ensembling $K$ types of random features may exhibit $(K+1)$-fold descent. Our analysis points out that risk curves with a specific number of descent generally exist in learning multi-component prediction models.",
+          "year": 2022,
+          "doi": null,
+          "arxiv_id": "2208.09897v3",
+          "url": "https://arxiv.org/pdf/2208.09897v3",
+          "verified": true
+        },
+        {
+          "id": "arxiv:1908.05355v5",
+          "title": "The generalization error of random features regression: Precise asymptotics and double descent curve",
+          "authors": [
+            "Song Mei",
+            "Andrea Montanari"
+          ],
+          "abstract": "Deep learning methods operate in regimes that defy the traditional statistical mindset. Neural network architectures often contain more parameters than training samples, and are so rich that they can interpolate the observed labels, even if the latter are replaced by pure noise. Despite their huge complexity, the same architectures achieve small generalization error on real data. This phenomenon has been rationalized in terms of a so-called `double descent' curve. As the model complexity increases, the test error follows the usual U-shaped curve at the beginning, first decreasing and then peaking around the interpolation threshold (when the model achieves vanishing training error). However, it descends again as model complexity exceeds this threshold. The global minimum of the test error is found above the interpolation threshold, often in the extreme overparametrization regime in which the number of parameters is much larger than the number of samples. Far from being a peculiar property of deep neural networks, elements of this behavior have been demonstrated in much simpler settings, including linear regression with random covariates. In this paper we consider the problem of learning an unknown function over the $d$-dimensional sphere $\\mathbb S^{d-1}$, from $n$ i.i.d. samples $(\\boldsymbol x_i, y_i)\\in \\mathbb S^{d-1} \\times \\mathbb R$, $i\\le n$. We perform ridge regression on $N$ random features of the form $σ(\\boldsymbol w_a^{\\mathsf T} \\boldsymbol x)$, $a\\le N$. This can be equivalently described as a two-layers neural network with random first-layer weights. We compute the precise asymptotics of the test error, in the limit $N,n,d\\to \\infty$ with $N/d$ and $n/d$ fixed. This provides the first analytically tractable model that captures all the features of the double descent phenomenon without assuming ad hoc misspecification structures.",
+          "year": 2019,
+          "doi": null,
+          "arxiv_id": "1908.05355v5",
+          "url": "https://arxiv.org/pdf/1908.05355v5",
+          "verified": true
+        },
+        {
+          "id": "arxiv:1507.03003v2",
+          "title": "High-Dimensional Asymptotics of Prediction: Ridge Regression and Classification",
+          "authors": [
+            "Edgar Dobriban",
+            "Stefan Wager"
+          ],
+          "abstract": "We provide a unified analysis of the predictive risk of ridge regression and regularized discriminant analysis in a dense random effects model. We work in a high-dimensional asymptotic regime where $p, n \\to \\infty$ and $p/n \\to γ\\in (0, \\, \\infty)$, and allow for arbitrary covariance among the features. For both methods, we provide an explicit and efficiently computable expression for the limiting predictive risk, which depends only on the spectrum of the feature-covariance matrix, the signal strength, and the aspect ratio $γ$. Especially in the case of regularized discriminant analysis, we find that predictive accuracy has a nuanced dependence on the eigenvalue distribution of the covariance matrix, suggesting that analyses based on the operator norm of the covariance matrix may not be sharp. Our results also uncover several qualitative insights about both methods: for example, with ridge regression, there is an exact inverse relation between the limiting predictive risk and the limiting estimation risk given a fixed signal strength. Our analysis builds on recent advances in random matrix theory.",
+          "year": 2015,
+          "doi": null,
+          "arxiv_id": "1507.03003v2",
+          "url": "https://arxiv.org/pdf/1507.03003v2",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2604.17202v2",
+          "title": "Double Descent in Quantum Kernel Ridge Regression",
+          "authors": [
+            "Kensuke Kamisoyama",
+            "Lento Nagano",
+            "Koji Terashi"
+          ],
+          "abstract": "Various classical machine learning models, including linear regression, kernel methods, and deep neural networks, exhibit double descent, in which the test risk peaks near the interpolation threshold and then decreases in the overparameterized regime. However, this phenomenon has received less attention in the quantum setting. In this work, we investigate the double descent phenomenon in quantum kernel ridge regression (QKRR). By applying deterministic equivalents from random matrix theory (RMT), we derive an asymptotic expression for the test risk of QKRR in the high-dimensional limit. Our analysis rigorously characterizes the interpolation peak and reveals how explicit regularization can effectively suppress it. We corroborate our theoretical results with numerical simulations, demonstrating close agreement even for finite-size quantum systems.",
+          "year": 2026,
+          "doi": null,
+          "arxiv_id": "2604.17202v2",
+          "url": "https://arxiv.org/pdf/2604.17202v2",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2304.08113v1",
+          "title": "Analysis of Interpolating Regression Models and the Double Descent Phenomenon",
+          "authors": [
+            "Tomas McKelvey"
+          ],
+          "abstract": "A regression model with more parameters than data points in the training data is overparametrized and has the capability to interpolate the training data. Based on the classical bias-variance tradeoff expressions, it is commonly assumed that models which interpolate noisy training data are poor to generalize. In some cases, this is not true. The best models obtained are overparametrized and the testing error exhibits the double descent behavior as the model order increases. In this contribution, we provide some analysis to explain the double descent phenomenon, first reported in the machine learning literature. We focus on interpolating models derived from the minimum norm solution to the classical least-squares problem and also briefly discuss model fitting using ridge regression. We derive a result based on the behavior of the smallest singular value of the regression matrix that explains the peak location and the double descent shape of the testing error as a function of model order.",
+          "year": 2023,
+          "doi": null,
+          "arxiv_id": "2304.08113v1",
+          "url": "https://arxiv.org/pdf/2304.08113v1",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2406.16966v1",
+          "title": "Mitigating Noisy Supervision Using Synthetic Samples with Soft Labels",
+          "authors": [
+            "Yangdi Lu",
+            "Wenbo He"
+          ],
+          "abstract": "Noisy labels are ubiquitous in real-world datasets, especially in the large-scale ones derived from crowdsourcing and web searching. It is challenging to train deep neural networks with noisy datasets since the networks are prone to overfitting the noisy labels during training, resulting in poor generalization performance. During an early learning phase, deep neural networks have been observed to fit the clean samples before memorizing the mislabeled samples. In this paper, we dig deeper into the representation distributions in the early learning phase and find that, regardless of their noisy labels, learned representations of images from the same category still congregate together. Inspired by it, we propose a framework that trains the model with new synthetic samples to mitigate the impact of noisy labels. Specifically, we propose a mixing strategy to create the synthetic samples by aggregating original samples with their top-K nearest neighbours, wherein the weights are calculated using a mixture model learning from the per-sample loss distribution. To enhance the performance in the presence of extreme label noise, we estimate the soft targets by gradually correcting the noisy labels. Furthermore, we demonstrate that the estimated soft targets yield a more accurate approximation to ground truth labels and the proposed method produces a superior quality of learned representations with more separated and clearly bounded clusters. The extensive experiments in two benchmarks (CIFAR-10 and CIFAR-100) and two larg-scale real-world datasets (Clothing1M and Webvision) demonstrate that our approach outperforms the state-of-the-art methods and robustness of the learned representation.",
+          "year": 2024,
+          "doi": null,
+          "arxiv_id": "2406.16966v1",
+          "url": "https://arxiv.org/pdf/2406.16966v1",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2603.28956v2",
+          "title": "Minimum Norm Interpolation via the Local Theory of Banach Spaces: The Role of $2$-Uniform Convexity",
+          "authors": [
+            "Gil Kur",
+            "Pierre Bizeul"
+          ],
+          "abstract": "The minimum-norm interpolator (MNI) framework has recently attracted considerable attention as a tool for understanding generalization in overparameterized models, such as neural networks. In this work, we study the MNI under a $2$-uniform convexity assumption, which is weaker than requiring the norm to be induced by an inner product; in this setting, the MNI typically does not admit a closed-form solution. At a high level, we show that this condition yields an upper bound on the MNI bias in both linear and nonlinear models. We further show that this bound is sharp for overparameterized linear regression when the norm's unit ball is in isotropic or John's position and the covariates are i.i.d.\\ sub-Gaussian, for example, when each covariate vector has i.i.d. Rademacher entries. Finally, under the same assumption on the covariates, we prove sharp generalization bounds for the $\\ell_p$-MNI when $p \\in \\bigl(1 + C/\\log d, 2\\bigr]$. To the best of our knowledge, this is the \\emph{first} work to establish sharp bounds for non-Gaussian covariates in linear models when the norm is not induced by an inner product. This work is deeply inspired by classical work on $K$-convexity and recent work on the geometry of $2$-uniformly convex and isotropic convex bodies.",
+          "year": 2026,
+          "doi": null,
+          "arxiv_id": "2603.28956v2",
+          "url": "https://arxiv.org/pdf/2603.28956v2",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2607.07694v1",
+          "title": "Minimum Norm Interpolation via The Local Theory of Banach Spaces: The Role of Gaussianity",
+          "authors": [
+            "Gil Kur",
+            "Reese Pathak"
+          ],
+          "abstract": "We study minimum-norm interpolation (MNI) in overparameterized linear regression with isotropic Gaussian covariates, in settings where the MNI has no closed-form formula. Whereas most prior work relied on Gaussian comparison tools such as the convex Gaussian min--max theorem (CGMT), our approach uses tools from high-dimensional geometry and probability. First, when the norm is in isotropic position, we obtain an ``offset'' bound that controls the amount by which the MNI shrinks the ground truth. Second, we show that the ``intrinsic'' variance of the $\\ell_1$-MNI is at most $O(\\tfrac{1}{n\\log(d/n)^2})$, using a variant of Talagrand's $L_1$--$L_2$ inequality due to Cordero-Erausquin and Ledoux [2012], together with a classical result of Gluskin [1988]. We recover the sharp mean-squared error (MSE) bound for the $\\ell_1$-MNI obtained by Wang et al. [2022], using the work of Fleury [2012] on the symmetric Gaussian polytope, which is defined via \\[ P_{n,d} := \\mathrm{conv}\\{\\pm X_i\\}_{i=1}^{d} \\text{ where } X_i \\overset{\\mathrm{i.i.d.}}{\\sim} N(0,\\mathrm{I}_{n \\times n}), \\] rather than CGMT. Our methods also imply improvements on previous results in high-dimensional geometry that may be of independent interest. First, we show that with overwhelming probability, the ratio between the isotropic constant of $P_{n,d}$ and that of the Euclidean ball in $\\mathbb{R}^n$ is at most $1+O((\\log(d/n))^{-2})$, improving a result of Klartag and Kozma [2009]. We also establish a refined weighted thin-shell estimate on $P_{n,d}$, and provide an elementary proof of the main theorem of Fleury [2012].",
+          "year": 2026,
+          "doi": null,
+          "arxiv_id": "2607.07694v1",
+          "url": "https://arxiv.org/pdf/2607.07694v1",
+          "verified": true
+        }
+      ]
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:09:23.788715+00:00"
+  },
+  {
+    "sequence": 7,
+    "action": "literature_search",
+    "status": "completed",
+    "summary": "Literature search (Crossref): Retrieved 8 scholarly records.",
+    "inputs": {
+      "tool": "literature_search",
+      "query": "random Fourier features regression generalization error kernel bandwidth spectral distribution finite sample high dimensional asymptotics expected risk optimal versus fixed ridge",
+      "limit": 8
+    },
+    "outputs": {
+      "category": "literature_search",
+      "sources": [
+        {
+          "id": "doi:10.1002/cpa.22008",
+          "title": "The Generalization Error of Random Features Regression: Precise Asymptotics and the Double Descent Curve",
+          "authors": [
+            "Song Mei",
+            "Andrea Montanari"
+          ],
+          "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>Deep learning methods operate in regimes that defy the traditional statistical mindset. Neural network architectures often contain more parameters than training samples, and are so rich that they can interpolate the observed labels, even if the latter are replaced by pure noise. Despite their huge complexity, the same architectures achieve small generalization error on real data.</jats:p>\n                  <jats:p>This phenomenon has been rationalized in terms of a so‐called ‘double descent’ curve. As the model complexity increases, the test error follows the usual U‐shaped curve at the beginning, first decreasing and then peaking around the interpolation threshold (when the model achieves vanishing training error). However, it descends again as model complexity exceeds this threshold. The global minimum of the test error is found above the interpolation threshold, often in the extreme overparametrization regime in which the number of parameters is much larger than the number of samples. Far from being a peculiar property of deep neural networks, elements of this behavior have been demonstrated in much simpler settings, including linear regression with random covariates.</jats:p>\n                  <jats:p>\n                    In this paper we consider the problem of learning an unknown function over the\n                    <jats:inline-graphic xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"graphic/cpa22008-math-0001.png\" xlink:title=\"urn:x-wiley:00103640:media:cpa22008:cpa22008-math-0001\"/>\n                    ‐dimensional sphere\n                    <jats:inline-graphic xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"graphic/cpa22008-math-0002.png\" xlink:title=\"urn:x-wiley:00103640:media:cpa22008:cpa22008-math-0002\"/>\n                    , from\n                    <jats:inline-graphic xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"graphic/cpa22008-math-0003.png\" xlink:title=\"urn:x-wiley:00103640:media:cpa22008:cpa22008-math-0003\"/>\n                    i.i.d. samples\n                    <jats:inline-graphic xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"graphic/cpa22008-math-0004.png\" xlink:title=\"urn:x-wiley:00103640:media:cpa22008:cpa22008-math-0004\"/>\n                    ,\n                    <jats:inline-graphic xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"graphic/cpa22008-math-0005.png\" xlink:title=\"urn:x-wiley:00103640:media:cpa22008:cpa22008-math-0005\"/>\n                    . We perform ridge regression on\n                    <jats:inline-graphic xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"graphic/cpa22008-math-0006.png\" xlink:title=\"urn:x-wiley:00103640:media:cpa22008:cpa22008-math-0006\"/>\n                    random features of the form\n                    <jats:inline-graphic xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"graphic/cpa22008-math-0007.png\" xlink:title=\"urn:x-wiley:00103640:media:cpa22008:cpa22008-math-0007\"/>\n                    ,\n                    <jats:inline-graphic xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"graphic/cpa22008-math-0008.png\" xlink:title=\"urn:x-wiley:00103640:media:cpa22008:cpa22008-math-0008\"/>\n                    . This can be equivalently described as a two‐layer neural network with random first‐layer weights. We compute the precise asymptotics of the test error, in the limit\n                    <jats:inline-graphic xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"graphic/cpa22008-math-0009.png\" xlink:title=\"urn:x-wiley:00103640:media:cpa22008:cpa22008-math-0009\"/>\n                    with\n                    <jats:inline-graphic xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"graphic/cpa22008-math-0010.png\" xlink:title=\"urn:x-wiley:00103640:media:cpa22008:cpa22008-math-0010\"/>\n                    and\n                    <jats:inline-graphic xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"graphic/cpa22008-math-0011.png\" xlink:title=\"urn:x-wiley:00103640:media:cpa22008:cpa22008-math-0011\"/>\n                    fixed. This provides the first analytically tractable model that captures all the features of the double descent phenomenon without assuming ad hoc misspecification structures. In particular, above a critical value of the signal‐to‐noise ratio, minimum test error is achieved by extremely overparametrized interpolators, i.e., networks that have a number of parameters much larger than the sample size, and vanishing training error. © 2021 Wiley Periodicals LLC.\n                  </jats:p>",
+          "year": 2021,
+          "doi": "10.1002/cpa.22008",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.1002/cpa.22008",
+          "verified": true
+        },
+        {
+          "id": "doi:10.2139/ssrn.4369019",
+          "title": "A Distribution Free Truncated Kernel Ridge Regression Estimator and Related Spectral Analyses",
+          "authors": [
+            "Asma Ben Saber",
+            "Abderrazek Karoui"
+          ],
+          "abstract": "",
+          "year": 2023,
+          "doi": "10.2139/ssrn.4369019",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.2139/ssrn.4369019",
+          "verified": true
+        },
+        {
+          "id": "doi:10.1007/978-3-031-10717-7_3",
+          "title": "Optimal Scaling vs Kernel Ridge Regression",
+          "authors": [
+            "Ton J. Cleophas",
+            "Aeilko H. Zwinderman"
+          ],
+          "abstract": "",
+          "year": 2022,
+          "doi": "10.1007/978-3-031-10717-7_3",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.1007/978-3-031-10717-7_3",
+          "verified": true
+        },
+        {
+          "id": "doi:10.1214/09-imscoll520",
+          "title": "Uniform in bandwidth consistency of kernel regression estimators at a fixed point",
+          "authors": [
+            "Julia Dony",
+            "Uwe Einmahl"
+          ],
+          "abstract": "",
+          "year": 2009,
+          "doi": "10.1214/09-imscoll520",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.1214/09-imscoll520",
+          "verified": true
+        },
+        {
+          "id": "doi:10.1214/17-aos1549",
+          "title": "High-dimensional asymptotics of prediction: Ridge regression and classification",
+          "authors": [
+            "Edgar Dobriban",
+            "Stefan Wager"
+          ],
+          "abstract": "",
+          "year": 2018,
+          "doi": "10.1214/17-aos1549",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.1214/17-aos1549",
+          "verified": true
+        },
+        {
+          "id": "doi:10.1109/ssci.2016.7849934",
+          "title": "Scalable Semi-supervised kernel spectral learning using random Fourier features",
+          "authors": [
+            "Siamak Mehrkanoon",
+            "Johan A.K. Suykens"
+          ],
+          "abstract": "",
+          "year": 2016,
+          "doi": "10.1109/ssci.2016.7849934",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.1109/ssci.2016.7849934",
+          "verified": true
+        },
+        {
+          "id": "doi:10.1109/tit.2009.2027479",
+          "title": "Local Minimax Learning of Functions With Best Finite Sample Estimation Error Bounds: Applications to Ridge and Lasso Regression, Boosting, Tree Learning, Kernel Machines, and Inverse Problems",
+          "authors": [
+            "Lee K. Jones"
+          ],
+          "abstract": "",
+          "year": 2009,
+          "doi": "10.1109/tit.2009.2027479",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.1109/tit.2009.2027479",
+          "verified": true
+        },
+        {
+          "id": "doi:10.1007/978-3-0348-8829-5_11",
+          "title": "Asymptotics of Spectral Projections of Some Random Matrices Approximating Integral Operators",
+          "authors": [
+            "Vladimir I. Koltchinskii"
+          ],
+          "abstract": "",
+          "year": 1998,
+          "doi": "10.1007/978-3-0348-8829-5_11",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.1007/978-3-0348-8829-5_11",
+          "verified": true
+        }
+      ]
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:09:24.196221+00:00"
+  },
+  {
+    "sequence": 8,
+    "action": "literature_search",
+    "status": "completed",
+    "summary": "Literature search (arXiv): Retrieved 8 arXiv records.",
+    "inputs": {
+      "tool": "arxiv_search",
+      "query": "random features regression double descent counterexamples absent interpolation peak ridge regularization hurts high signal to noise ratio vanishing optimal regularization",
+      "limit": 8
+    },
+    "outputs": {
+      "category": "literature_search",
+      "sources": [
+        {
+          "id": "arxiv:2305.18496v2",
+          "title": "Generalized equivalences between subsampling and ridge regularization",
+          "authors": [
+            "Pratik Patil",
+            "Jin-Hong Du"
+          ],
+          "abstract": "We establish precise structural and risk equivalences between subsampling and ridge regularization for ensemble ridge estimators. Specifically, we prove that linear and quadratic functionals of subsample ridge estimators, when fitted with different ridge regularization levels $λ$ and subsample aspect ratios $ψ$, are asymptotically equivalent along specific paths in the $(λ,ψ)$-plane (where $ψ$ is the ratio of the feature dimension to the subsample size). Our results only require bounded moment assumptions on feature and response distributions and allow for arbitrary joint distributions. Furthermore, we provide a data-dependent method to determine the equivalent paths of $(λ,ψ)$. An indirect implication of our equivalences is that optimally tuned ridge regression exhibits a monotonic prediction risk in the data aspect ratio. This resolves a recent open problem raised by Nakkiran et al. for general data distributions under proportional asymptotics, assuming a mild regularity condition that maintains regression hardness through linearized signal-to-noise ratios.",
+          "year": 2023,
+          "doi": null,
+          "arxiv_id": "2305.18496v2",
+          "url": "https://arxiv.org/pdf/2305.18496v2",
+          "verified": true
+        },
+        {
+          "id": "arxiv:1507.03003v2",
+          "title": "High-Dimensional Asymptotics of Prediction: Ridge Regression and Classification",
+          "authors": [
+            "Edgar Dobriban",
+            "Stefan Wager"
+          ],
+          "abstract": "We provide a unified analysis of the predictive risk of ridge regression and regularized discriminant analysis in a dense random effects model. We work in a high-dimensional asymptotic regime where $p, n \\to \\infty$ and $p/n \\to γ\\in (0, \\, \\infty)$, and allow for arbitrary covariance among the features. For both methods, we provide an explicit and efficiently computable expression for the limiting predictive risk, which depends only on the spectrum of the feature-covariance matrix, the signal strength, and the aspect ratio $γ$. Especially in the case of regularized discriminant analysis, we find that predictive accuracy has a nuanced dependence on the eigenvalue distribution of the covariance matrix, suggesting that analyses based on the operator norm of the covariance matrix may not be sharp. Our results also uncover several qualitative insights about both methods: for example, with ridge regression, there is an exact inverse relation between the limiting predictive risk and the limiting estimation risk given a fixed signal strength. Our analysis builds on recent advances in random matrix theory.",
+          "year": 2015,
+          "doi": null,
+          "arxiv_id": "1507.03003v2",
+          "url": "https://arxiv.org/pdf/1507.03003v2",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2208.09897v3",
+          "title": "Multiple Descent in the Multiple Random Feature Model",
+          "authors": [
+            "Xuran Meng",
+            "Jianfeng Yao",
+            "Yuan Cao"
+          ],
+          "abstract": "Recent works have demonstrated a double descent phenomenon in over-parameterized learning. Although this phenomenon has been investigated by recent works, it has not been fully understood in theory. In this paper, we investigate the multiple descent phenomenon in a class of multi-component prediction models. We first consider a ''double random feature model'' (DRFM) concatenating two types of random features, and study the excess risk achieved by the DRFM in ridge regression. We calculate the precise limit of the excess risk under the high dimensional framework where the training sample size, the dimension of data, and the dimension of random features tend to infinity proportionally. Based on the calculation, we further theoretically demonstrate that the risk curves of DRFMs can exhibit triple descent. We then provide a thorough experimental study to verify our theory. At last, we extend our study to the ''multiple random feature model'' (MRFM), and show that MRFMs ensembling $K$ types of random features may exhibit $(K+1)$-fold descent. Our analysis points out that risk curves with a specific number of descent generally exist in learning multi-component prediction models.",
+          "year": 2022,
+          "doi": null,
+          "arxiv_id": "2208.09897v3",
+          "url": "https://arxiv.org/pdf/2208.09897v3",
+          "verified": true
+        },
+        {
+          "id": "arxiv:1406.0156v2",
+          "title": "$l_1$-regularized Outlier Isolation and Regression",
+          "authors": [
+            "Sheng Han",
+            "Suzhen Wang",
+            "Xinyu Wu"
+          ],
+          "abstract": "This paper proposed a new regression model called $l_1$-regularized outlier isolation and regression (LOIRE) and a fast algorithm based on block coordinate descent to solve this model. Besides, assuming outliers are gross errors following a Bernoulli process, this paper also presented a Bernoulli estimate model which, in theory, should be very accurate and robust due to its complete elimination of affections caused by outliers. Though this Bernoulli estimate is hard to solve, it could be approximately achieved through a process which takes LOIRE as an important intermediate step. As a result, the approximate Bernoulli estimate is a good combination of Bernoulli estimate's accuracy and LOIRE regression's efficiency with several simulations conducted to strongly verify this point. Moreover, LOIRE can be further extended to realize robust rank factorization which is powerful in recovering low-rank component from massive corruptions. Extensive experimental results showed that the proposed method outperforms state-of-the-art methods like RPCA and GoDec in the aspect of computation speed with a competitive performance.",
+          "year": 2014,
+          "doi": null,
+          "arxiv_id": "1406.0156v2",
+          "url": "https://arxiv.org/pdf/1406.0156v2",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2604.17202v2",
+          "title": "Double Descent in Quantum Kernel Ridge Regression",
+          "authors": [
+            "Kensuke Kamisoyama",
+            "Lento Nagano",
+            "Koji Terashi"
+          ],
+          "abstract": "Various classical machine learning models, including linear regression, kernel methods, and deep neural networks, exhibit double descent, in which the test risk peaks near the interpolation threshold and then decreases in the overparameterized regime. However, this phenomenon has received less attention in the quantum setting. In this work, we investigate the double descent phenomenon in quantum kernel ridge regression (QKRR). By applying deterministic equivalents from random matrix theory (RMT), we derive an asymptotic expression for the test risk of QKRR in the high-dimensional limit. Our analysis rigorously characterizes the interpolation peak and reveals how explicit regularization can effectively suppress it. We corroborate our theoretical results with numerical simulations, demonstrating close agreement even for finite-size quantum systems.",
+          "year": 2026,
+          "doi": null,
+          "arxiv_id": "2604.17202v2",
+          "url": "https://arxiv.org/pdf/2604.17202v2",
+          "verified": true
+        },
+        {
+          "id": "arxiv:1610.08663v4",
+          "title": "Regularization parameter selection in indirect regression by residual based bootstrap",
+          "authors": [
+            "Nicolai Bissantz",
+            "Justin Chown",
+            "Holger Dette"
+          ],
+          "abstract": "Residual-based analysis is generally considered a cornerstone of statistical methodology. For a special case of indirect regression, we investigate the residual-based empirical distribution function and provide a uniform expansion of this estimator, which is also shown to be asymptotically most precise. This investigation naturally leads to a completely data-driven technique for selecting a regularization parameter used in our indirect regression function estimator. The resulting methodology is based on a smooth bootstrap of the model residuals. A simulation study demonstrates the effectiveness of our approach.",
+          "year": 2016,
+          "doi": null,
+          "arxiv_id": "1610.08663v4",
+          "url": "https://arxiv.org/pdf/1610.08663v4",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2512.14213v2",
+          "title": "Graph Signal Denoising Using Regularization by Denoising and Its Parameter Estimation",
+          "authors": [
+            "Hayate Kojima",
+            "Hiroshi Higashi",
+            "Yuichi Tanaka"
+          ],
+          "abstract": "In this paper, we propose an interpretable denoising method for graph signals using regularization by denoising (RED). RED is a technique developed for image restoration that uses an efficient (and sometimes black-box) denoiser in the regularization term of the optimization problem. By using RED, optimization problems can be designed with the explicit use of the denoiser, and the gradient of the regularization term can be easily computed under mild conditions. We adapt RED for denoising of graph signals beyond image processing. We show that many graph signal denoisers, including graph neural networks, theoretically or practically satisfy the conditions for RED. We also study the effectiveness of RED from a graph filter perspective. Furthermore, we propose supervised and unsupervised parameter estimation methods based on deep algorithm unrolling. These methods aim to enhance the algorithm applicability, particularly in the unsupervised setting. Denoising experiments for synthetic and real-world datasets show that our proposed method improves signal denoising accuracy in mean squared error compared to existing graph signal denoising methods.",
+          "year": 2025,
+          "doi": null,
+          "arxiv_id": "2512.14213v2",
+          "url": "https://arxiv.org/pdf/2512.14213v2",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2010.15817v2",
+          "title": "$σ$-Ridge: group regularized ridge regression via empirical Bayes noise level cross-validation",
+          "authors": [
+            "Nikolaos Ignatiadis",
+            "Panagiotis Lolas"
+          ],
+          "abstract": "Features in predictive models are not exchangeable, yet common supervised models treat them as such. Here we study ridge regression when the analyst can partition the features into $K$ groups based on external side-information. For example, in high-throughput biology, features may represent gene expression, protein abundance or clinical data and so each feature group represents a distinct modality. The analyst's goal is to choose optimal regularization parameters $λ= (λ_1, \\dotsc, λ_K)$ -- one for each group. In this work, we study the impact of $λ$ on the predictive risk of group-regularized ridge regression by deriving limiting risk formulae under a high-dimensional random effects model with $p\\asymp n$ as $n \\to \\infty$. Furthermore, we propose a data-driven method for choosing $λ$ that attains the optimal asymptotic risk: The key idea is to interpret the residual noise variance $σ^2$, as a regularization parameter to be chosen through cross-validation. An empirical Bayes construction maps the one-dimensional parameter $σ$ to the $K$-dimensional vector of regularization parameters, i.e., $σ\\mapsto \\widehatλ(σ)$. Beyond its theoretical optimality, the proposed method is practical and runs as fast as cross-validated ridge regression without feature groups ($K=1$).",
+          "year": 2020,
+          "doi": null,
+          "arxiv_id": "2010.15817v2",
+          "url": "https://arxiv.org/pdf/2010.15817v2",
+          "verified": true
+        }
+      ]
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:09:25.941396+00:00"
+  },
+  {
+    "sequence": 9,
+    "action": "source_selection",
+    "status": "completed",
+    "summary": "Selected 4 sources, including attached and AI reasoning sources automatically.",
+    "inputs": {},
+    "outputs": {
+      "automatically_selected_source_ids": [
+        "arxiv:1908.05355"
+      ],
+      "selected_source_ids": [
+        "arxiv:1908.05355",
+        "arxiv:2208.09897v3",
+        "arxiv:1507.03003v2",
+        "arxiv:2304.08113v1"
+      ]
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:09:33.042376+00:00"
+  },
+  {
+    "sequence": 10,
+    "action": "additional_literature_search",
+    "status": "completed",
+    "summary": "Searched 3 targeted queries; found 20 additional candidates; 0 literature search failures across the investigation.",
+    "inputs": {},
+    "outputs": {
+      "queries": [
+        "random Fourier feature regression noisy labels double descent interpolation threshold test error minimum norm ridge regularization",
+        "random Fourier features regression generalization error kernel bandwidth spectral distribution finite sample high dimensional asymptotics expected risk optimal versus fixed ridge",
+        "random features regression double descent counterexamples absent interpolation peak ridge regularization hurts high signal to noise ratio vanishing optimal regularization"
+      ],
+      "source_ids": [
+        "arxiv:2208.09897v3",
+        "arxiv:1908.05355",
+        "arxiv:1507.03003v2",
+        "arxiv:2604.17202v2",
+        "arxiv:2304.08113v1",
+        "arxiv:2406.16966v1",
+        "arxiv:2603.28956v2",
+        "arxiv:2607.07694v1",
+        "doi:10.1002/cpa.22008",
+        "doi:10.2139/ssrn.4369019",
+        "doi:10.1007/978-3-031-10717-7_3",
+        "doi:10.1214/09-imscoll520",
+        "doi:10.1109/ssci.2016.7849934",
+        "doi:10.1109/tit.2009.2027479",
+        "doi:10.1007/978-3-0348-8829-5_11",
+        "arxiv:2305.18496v2",
+        "arxiv:1406.0156v2",
+        "arxiv:1610.08663v4",
+        "arxiv:2512.14213v2",
+        "arxiv:2010.15817v2"
+      ],
+      "search_failures": 0
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:09:33.056713+00:00"
+  },
+  {
+    "sequence": 11,
+    "action": "evidence_extraction",
+    "status": "completed",
+    "summary": "Recorded 4 full-text inspections and extracted 5 grounded items.",
+    "inputs": {},
+    "outputs": {
+      "evidence": 5
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:10:00.375854+00:00"
+  },
+  {
+    "sequence": 12,
+    "action": "experiment_planning",
+    "status": "completed",
+    "summary": "Planned 1 controlled experiments.",
+    "inputs": {},
+    "outputs": {
+      "plans": 1
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:12:19.903495+00:00"
+  },
+  {
+    "sequence": 13,
+    "action": "experiment_attempt",
+    "status": "completed",
+    "summary": "Experiment Fourier-feature interpolation peak and ridge comparison completed execution.",
+    "inputs": {},
+    "outputs": {
+      "category": "experiment_execution",
+      "design_id": "design_0540b3e6e927",
+      "experiment_id": "experiment_d9248b8453cc",
+      "runtime_seconds": 38.601739699952304
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:12:58.555501+00:00"
+  },
+  {
+    "sequence": 14,
+    "action": "experiment_visualization",
+    "status": "completed",
+    "summary": "Generated and recorded a visualization from result.json.",
+    "inputs": {},
+    "outputs": {
+      "experiment_id": "experiment_d9248b8453cc",
+      "artifact": "artifacts/attempt-e7d0afcca22d44f1990face790d08d72/e094972d-69d2-4cd6-8c51-b590a204ac8a/experiments/visualization_16434a70e0c6/visualization.svg"
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:12:59.562423+00:00"
+  },
+  {
+    "sequence": 15,
+    "action": "experiment_execution",
+    "status": "completed",
+    "summary": "Executed 1 experiments; 0 execution failures, 0 interpretation failures, 0 visualization failures.",
+    "inputs": {},
+    "outputs": {
+      "executed": 1,
+      "execution_failures": 0,
+      "interpretation_failures": 0,
+      "visualization_failures": 0
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:13:15.488821+00:00"
+  },
+  {
+    "sequence": 16,
+    "action": "evidence_synthesis",
+    "status": "completed",
+    "summary": "Separated support, contradictions, qualifications, and unresolved questions.",
+    "inputs": {},
+    "outputs": {},
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:13:38.251973+00:00"
+  },
+  {
+    "sequence": 17,
+    "action": "confidence_estimation",
+    "status": "completed",
+    "summary": "Qualitative assessment: The conjecture is well supported in the tested Fourier-feature setting, both for the averaged curve and for each observed repetition. The evidence establishes an interpolation-aligned peak and its suppression by three fixed ridge strengths. Transfer to other synthetic settings or regularization choices remains unresolved. I interpret the conjecture as describing the noisy synthetic setting under consideration, not as asserting the same behavior for every data distribution or every positive ridge strength. The executed experiment supplies a concrete interpretation: minimum-norm least squares is the unregularized baseline, and test error is MSE against independent noisy labels, averaged over repetitions.\n\nExperiment 1: Fourier-feature interpolation peak and ridge comparison provides the strongest evidence. It held 60 training observations fixed and used six-dimensional standard Gaussian inputs, a first-coordinate linear target, noise variance 0.2, and Gaussian-spectrum cosine features with bandwidth 2.0. Feature counts ranged from 15 to 180. Nested feature prefixes and shared test observations supported paired comparisons. All five repetitions completed without exclusions or reported numerical failures, each using 2,000 test observations.\n\nEvery repetition first reached numerical interpolation at 60 features, using a relative residual tolerance of \\(10^{-8}\\). Every sampled unregularized curve also attained its maximum at 60 features. The averaged unregularized MSE there was 171.6946, versus 1.9614 at 45 features and 3.6320 at 75 features. Thus the peak location was measured independently through training residuals, rather than assumed from equality between sample size and feature count.\n\nWithin the common threshold window of 54, 57, 60, 63, and 66 features, the maxima of the averaged ridge curves were 0.9088, 0.5279, and 0.4559 for \\(\\lambda\\in\\{0.0001,0.001,0.01\\}\\), respectively. Each ridge strength also reduced each repetition’s window maximum. These are distinct comparisons—maxima of averaged curves and paired per-repetition maxima—and both support peak suppression. The fixed-strength results resolve whether feature-count-dependent optimal tuning was necessary in this implementation: it was not.\n\nThe inspected page-19 passage of [The generalization error of random features regression: Precise asymptotics and double descent curve](https://arxiv.org/abs/1908.05355) adds qualified literature support. Contrary to the earlier review’s limitation statement, this passage explicitly describes an interpolation-aligned peak and a comparison with optimal ridge that makes test error strictly decreasing with feature count. However, its example uses ReLU features and separately optimizes the asymptotic error at each feature count. It is supporting context, not a Fourier-feature theorem or a replication of the executed experiment. The inspected page-8 discussion also reports that nonvanishing regularization can hurt at high signal-to-noise ratio. That limits broad claims about ridge improving generalization everywhere; it does not contradict the observed near-threshold reductions.\n\nThe remaining limitations concern magnitude and transfer, rather than whether these effects occurred. Unregularized threshold MSE ranged from 11.7865 to 394.0918 across the five repetitions, making the average peak height sampling-sensitive. No confidence interval was supplied. Other targets, distributions, bandwidths, noise levels, sample sizes, ridge strengths, and numerical cutoffs were not tested. Unsampled feature counts and alternative windows could change the measured peak height. Error against the noiseless target was not measured. Finally, the averaged baseline did not initially decrease, so these results support the conjectured interpolation peak, not every aspect of a textbook double-descent curve. None of these scope limits is contradictory evidence against the demonstrated phenomenon.",
+    "inputs": {},
+    "outputs": {
+      "method": "llm_judgment",
+      "model": "openai:gpt-6.1-sol"
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:13:56.765147+00:00"
+  },
+  {
+    "sequence": 18,
+    "action": "final_report",
+    "status": "completed",
+    "summary": "Generated a traceable conjecture assessment.",
+    "inputs": {},
+    "outputs": {},
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:13:56.789735+00:00"
+  }
+]

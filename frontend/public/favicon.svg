@@ -1,0 +1,11 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="18" fill="#174f3c"/>
+  <text
+    x="32"
+    y="45"
+    fill="#ffffff"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="39"
+    text-anchor="middle"
+  >R</text>
+</svg>

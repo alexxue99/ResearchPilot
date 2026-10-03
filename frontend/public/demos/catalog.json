@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "double-descent",
+    "title": "Double descent",
+    "summary": "How test error changes as a random-feature model grows.",
+    "question": "In noisy synthetic regression using random Fourier features, increasing the feature count produces a test-error peak near the interpolation threshold, and ridge regularization reduces that peak.",
+    "status": "completed",
+    "model": "openai:gpt-6.1-sol",
+    "created_at": "2026-10-03T21:07:44.667445+00:00",
+    "exported_at": "2026-10-03T21:15:57.025138+00:00",
+    "experiments": 1
+  },
+  {
+    "slug": "spurious-correlations",
+    "title": "Spurious correlations",
+    "summary": "Testing whether a predictive shortcut improves in-distribution accuracy but harms generalization when its correlation reverses.",
+    "question": "For a binary classifier trained on synthetic data, adding a feature strongly correlated with the label during training improves in-distribution accuracy but reduces accuracy when that correlation reverses at test time",
+    "status": "completed",
+    "model": "openai:gpt-6.1-sol",
+    "created_at": "2026-10-03T21:27:47.122762+00:00",
+    "exported_at": "2026-10-03T21:33:01.317988+00:00",
+    "experiments": 1
+  },
+  {
+    "slug": "overfitting-noise",
+    "title": "Overfitting under label noise",
+    "summary": "Testing whether increasing training-set size narrows the gap between noisy-label training accuracy and clean test accuracy.",
+    "question": "For a fixed-size neural network trained on synthetic binary classification data with 20% randomly flipped training labels, increasing the training-set size reduces the gap between training accuracy and clean test accuracy",
+    "status": "completed",
+    "model": "openai:gpt-6.1-sol",
+    "created_at": "2026-10-03T21:33:53.237695+00:00",
+    "exported_at": "2026-10-03T21:40:54.841443+00:00",
+    "experiments": 1
+  }
+]

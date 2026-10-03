@@ -1,0 +1,93 @@
+[
+  {
+    "kind": "statement",
+    "text": "Proof.Weoutlinetheproofofstaircasefunctionhere.Noteforeachoftheterminx1+x1x2+x1x2x3,they\nareindependentlydistributed.Thusfortermsinthestaircasethefouriercoefficentofthemforthethreshold\nstaircaseisthesameasthemajorityfunctionfor \\Majd(k)wherek = 1.Further,wehavePs∈Scscd(s)2→ 2π\nasd→∞[O’D21](ch5.3).",
+    "page": 18,
+    "start": 933,
+    "end": 1231
+  },
+  {
+    "kind": "statement",
+    "text": "Proof.Thisisequivalenttosayingthatgivenanybooleanvectorx,PD(x) = 2(1−λ)Punif(x)+(1−2λ)Psame(x).\nNotethatPD(x) =λPsame(x)+(1−λ)Pdiff(x) = (2λ−1)Psame(x)+(1−λ)(Pdiff(x)+Psame(x)). Thuswe\nonlyneedtoarguethatPdiff(x)+Psame(x) = 2Punif(x)formsauniformdistribution.Andwehave",
+    "page": 18,
+    "start": 1441,
+    "end": 1709
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. ConsiderPx∼U(Xs =xs|f(Xs) =f(Xc)) =          P(X=xs)P(fc(Xc)=fs(xs))P(fc(xc)=−1)P(fs(xs)=−1)+P(fc(xc)=1)P(fs(xs)=1)Suppose\nfs(xs) = 1,thenwehave            P(X=xs)P(fc(xc)=1)P(fc(xc)=−1)P(fs(xs)=−1)+P(fc(xc)=1)P(fs(xs)=1) =PU(Xs =xs).Theequalityalso\nholdifwetakefs(xs) =−1orDdiff. WhichwouldimplythisisalsotrueforDλThuswecompletethe",
+    "page": 19,
+    "start": 159,
+    "end": 498
+  },
+  {
+    "kind": "statement",
+    "text": "proof.",
+    "page": 19,
+    "start": 499,
+    "end": 505
+  },
+  {
+    "kind": "statement",
+    "text": "Proof.Wehave,",
+    "page": 19,
+    "start": 655,
+    "end": 668
+  },
+  {
+    "kind": "statement",
+    "text": "Proof.Thisisbestillustratedbyanexample.Considerk = 5,ifthereisone−1inx,thenf1(x) = 9,f2(x) =\n7,f3(x) = 5,f4(x) = 3,f5(x) = 1,f6(x) = 0.Letg(x)denotethenumberof−1asamplexhas.Wehavefor\nall{x∈X|g(x) =c},theywillhavethesamevalueofPxandthustheirvalueonf1,...f5willbethesame.\nInthisway,wecancategorizesamplesinto6caseswhereg(x) = 0,g(x) = 1,...,g(x) = 5.Andwecanforma\nmatrixwhereeachrowrepresentthetypeofsampleandcolumnrepresentitsvalueonfj.Thusthematrix\nweformcanberepresentedasMi,j =fj(x|g(x) =i).Inthecaseofk = 5,thematrixis\n                                              11   9   7   5   3   1\n                                              9    7   5   3   1   0\n                                         M =     7    5   3   1   0   0                                   (B.1)\n                                                 5    3   1   0   0   0\n                                                 3    1   0   0   0   0\n                                                 1    0   0   0   0   0",
+    "page": 23,
+    "start": 1114,
+    "end": 2117
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. FromtheproofoflemmaB.1,weseeforthesolutionu∗toexist,allwerequiredisthefunction\noutputsondifferentcasesofxformatriangularmatrixandthedependencyoftheupperboundof∥u∥2will\nbeonthesmallestentryofthediagonalofthematrix.Wewillshowthatgiven|wj,i−1|≤  12k,forallx",
+    "page": 24,
+    "start": 0,
+    "end": 261
+  },
+  {
+    "kind": "statement",
+    "text": "Proof.Wedenotearandomsamplepointby xianditscorrespondinggradientimposedontheaneuron\nweightsby gij = [−yajI{w⊤x+b> 0}xj].\n   Wewillusegs,gc,gurefertothepopulationgradientcalculatedinappendixB.1.4.Wewantboundthe\nprobabilityoftheevent1). Onlyspuriousweightsarekeptafterthresholding. 2).onallspuriousindexes\n  Pm\n|µ  k=1dg(k)i,j\n      m −1|≤  12cbyfindingtherequirednumberofm.Thatisforallweights,iftheweightjisona\nspuriousvariable,itmustsatisfyatthesametime\n                                                            Pn\n                                   |µbgj−1|≤  1                k=1cgk\n                                               2sandbgj−        n   > 0",
+    "page": 24,
+    "start": 2201,
+    "end": 2859
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. Forsomewi∼{±1}n,theprobabilitythatwisatisfythecondition1).−aiχ[s]\\j(wi) = sgn(ξs−1),∀j∈\n[s]\n   is 2−s.2.Additionally,forsomefixedi′∈ [s],theprobabilitythatbi =−s+i′is  1s.Thereforeforsome\nfixedi∈ [r/2]andi′∈ [s],withprobability     1s2−s,bi =bi+r/2 =−k+i′andtheweightsatisfy1). Taking\nr≥ 2slog(s/δ),wegettheprobabilitythatthereisnoi∈ [r/2]thatsatisfiestheaboveconditionforany\nfixedi′is:                                       r/2\n                                     1−     1n2n−1   ≤ exp(−  r2n2n−1)≤δs",
+    "page": 25,
+    "start": 1755,
+    "end": 2264
+  },
+  {
+    "kind": "statement",
+    "text": "Proof.Wetakethefirstgradientstepandthenfixthehiddenlayer.LetF(u) =Ex[l(u⊤σ(W(1)x+b(1)),y)].\nThusFisaconvexfunction.Foreveryt,denote",
+    "page": 26,
+    "start": 651,
+    "end": 782
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. Letthebayesclassifierbeg(x).Thebayesclassifierisdefinedas infg(x)Ex,y[l(g(x),y)].Here",
+    "page": 26,
+    "start": 2148,
+    "end": 2240
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. Letthemodelbem(x) =hs(xs)+h(x). FromLemma2,wehaveϕ(fs(xs)hs(xs)) =λ. Suppose\nh(x) =Pki=1biσ(w⊤ix).Letuscomputethepopulationgradient∇wiLDλ(m(x)):",
+    "page": 27,
+    "start": 711,
+    "end": 862
+  },
+  {
+    "kind": "statement",
+    "text": "Proof.Wehaveforanyweightonacorecoordinatec∈Ic,∇wcLDλ(m(x)) =−λ∇wcEDsame[log(ϕ(fs(xs)m(x))]−\n(1−λ)∇wcEDdiff[log(ϕ(−fs(xs)m(x))].Wewillshow∇wcEDsame[log(ϕ(fs(xs)m(x))] = 0andthesamecanbe\nshowninasimilarmannerforDdiff.",
+    "page": 27,
+    "start": 1825,
+    "end": 2040
+  }
+]

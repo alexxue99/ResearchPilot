@@ -1,0 +1,585 @@
+{
+  "design": "Feature augmentation under correlation reversal",
+  "method": "Full-batch gradient descent for L2-regularized logistic ERM; intercept also regularized",
+  "settings": {
+    "mu": 1,
+    "p": 0.95,
+    "lambda": 0.01,
+    "n_train": 2000,
+    "n_test": 10000,
+    "repeat_count": 5,
+    "initial_parameter": 0,
+    "gradient_tolerance": 1e-06,
+    "iteration_cap_per_fit": 100000,
+    "training_law": "P",
+    "test_laws": [
+      "P",
+      "Q"
+    ],
+    "arithmetic": "float64"
+  },
+  "seeds": [
+    17,
+    43,
+    101,
+    229,
+    503
+  ],
+  "wall_clock_cap_seconds": 300.0,
+  "paired_comparisons": {
+    "P": {
+      "seeds": [
+        17,
+        43,
+        101,
+        229,
+        503
+      ],
+      "control": [
+        0.8373,
+        0.8381,
+        0.8391,
+        0.8394,
+        0.8379
+      ],
+      "treatment": [
+        0.9576,
+        0.9602,
+        0.9599,
+        0.9602,
+        0.9599
+      ],
+      "higher_supports": true,
+      "control_censored": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "treatment_censored": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "censoring_meaning": "True denotes a completed evaluation with at least one nonconverged fit; no accuracy imputation."
+    },
+    "Q": {
+      "seeds": [
+        17,
+        43,
+        101,
+        229,
+        503
+      ],
+      "control": [
+        0.8391,
+        0.8418,
+        0.8396,
+        0.8418,
+        0.8406
+      ],
+      "treatment": [
+        0.269,
+        0.3457,
+        0.2916,
+        0.2857,
+        0.3033
+      ],
+      "higher_supports": false,
+      "control_censored": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "treatment_censored": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "censoring_meaning": "True denotes a completed evaluation with at least one nonconverged fit; no accuracy imputation."
+    }
+  },
+  "repeats": [
+    {
+      "seed": 17,
+      "completed": true,
+      "qualifying": true,
+      "fits": [
+        {
+          "coefficients": [
+            -0.036722249788438424,
+            1.7505027360569685
+          ],
+          "gradient_norm": 8.398832906697671e-07,
+          "gradient_updates": 54,
+          "converged": true,
+          "iteration_cap_status": false,
+          "time_cap_status": false,
+          "status": "converged",
+          "step_size": 1.9442706246177044,
+          "squared_spectral_norm": 4034.653535730404,
+          "model": "baseline"
+        },
+        {
+          "coefficients": [
+            -0.03406588655859461,
+            1.3479319674307417,
+            2.3374057667171395
+          ],
+          "gradient_norm": 9.459571654933459e-07,
+          "gradient_updates": 136,
+          "converged": true,
+          "iteration_cap_status": false,
+          "time_cap_status": false,
+          "status": "converged",
+          "step_size": 1.5535646762629585,
+          "squared_spectral_norm": 5069.44766847023,
+          "model": "augmented"
+        }
+      ],
+      "tests": {
+        "P": {
+          "n": 10000,
+          "correct_counts": [
+            8373,
+            9576
+          ],
+          "accuracy": [
+            0.8373,
+            0.9576
+          ],
+          "difference": 0.12029999999999996,
+          "correctness_table": [
+            [
+              112,
+              1515
+            ],
+            [
+              312,
+              8061
+            ]
+          ]
+        },
+        "Q": {
+          "n": 10000,
+          "correct_counts": [
+            8391,
+            2690
+          ],
+          "accuracy": [
+            0.8391,
+            0.269
+          ],
+          "difference": -0.5700999999999999,
+          "correctness_table": [
+            [
+              1522,
+              87
+            ],
+            [
+              5788,
+              2603
+            ]
+          ]
+        }
+      },
+      "status": "completed"
+    },
+    {
+      "seed": 43,
+      "completed": true,
+      "qualifying": true,
+      "fits": [
+        {
+          "coefficients": [
+            0.014439606808494283,
+            1.8923197288567828
+          ],
+          "gradient_norm": 8.587493847955172e-07,
+          "gradient_updates": 62,
+          "converged": true,
+          "iteration_cap_status": false,
+          "time_cap_status": false,
+          "status": "converged",
+          "step_size": 1.9285722335192441,
+          "squared_spectral_norm": 4068.1464167933495,
+          "model": "baseline"
+        },
+        {
+          "coefficients": [
+            -0.02291728306414449,
+            1.4276285334926944,
+            2.131021334737412
+          ],
+          "gradient_norm": 9.423812827860345e-07,
+          "gradient_updates": 132,
+          "converged": true,
+          "iteration_cap_status": false,
+          "time_cap_status": false,
+          "status": "converged",
+          "step_size": 1.5122960759864659,
+          "squared_spectral_norm": 5209.969422675137,
+          "model": "augmented"
+        }
+      ],
+      "tests": {
+        "P": {
+          "n": 10000,
+          "correct_counts": [
+            8381,
+            9602
+          ],
+          "accuracy": [
+            0.8381,
+            0.9602
+          ],
+          "difference": 0.1221000000000001,
+          "correctness_table": [
+            [
+              143,
+              1476
+            ],
+            [
+              255,
+              8126
+            ]
+          ]
+        },
+        "Q": {
+          "n": 10000,
+          "correct_counts": [
+            8418,
+            3457
+          ],
+          "accuracy": [
+            0.8418,
+            0.3457
+          ],
+          "difference": -0.4961,
+          "correctness_table": [
+            [
+              1504,
+              78
+            ],
+            [
+              5039,
+              3379
+            ]
+          ]
+        }
+      },
+      "status": "completed"
+    },
+    {
+      "seed": 101,
+      "completed": true,
+      "qualifying": true,
+      "fits": [
+        {
+          "coefficients": [
+            -0.020304963874255007,
+            1.6820890252948368
+          ],
+          "gradient_norm": 8.225179981235056e-07,
+          "gradient_updates": 50,
+          "converged": true,
+          "iteration_cap_status": false,
+          "time_cap_status": false,
+          "status": "converged",
+          "step_size": 1.9161528167364024,
+          "squared_spectral_norm": 4095.0323513474386,
+          "model": "baseline"
+        },
+        {
+          "coefficients": [
+            -0.031479544497562344,
+            1.3322343787234365,
+            2.19830144871433
+          ],
+          "gradient_norm": 9.760013126326063e-07,
+          "gradient_updates": 124,
+          "converged": true,
+          "iteration_cap_status": false,
+          "time_cap_status": false,
+          "status": "converged",
+          "step_size": 1.5444410849289982,
+          "squared_spectral_norm": 5099.867382489232,
+          "model": "augmented"
+        }
+      ],
+      "tests": {
+        "P": {
+          "n": 10000,
+          "correct_counts": [
+            8391,
+            9599
+          ],
+          "accuracy": [
+            0.8391,
+            0.9599
+          ],
+          "difference": 0.12080000000000002,
+          "correctness_table": [
+            [
+              111,
+              1498
+            ],
+            [
+              290,
+              8101
+            ]
+          ]
+        },
+        "Q": {
+          "n": 10000,
+          "correct_counts": [
+            8396,
+            2916
+          ],
+          "accuracy": [
+            0.8396,
+            0.2916
+          ],
+          "difference": -0.548,
+          "correctness_table": [
+            [
+              1530,
+              74
+            ],
+            [
+              5554,
+              2842
+            ]
+          ]
+        }
+      },
+      "status": "completed"
+    },
+    {
+      "seed": 229,
+      "completed": true,
+      "qualifying": true,
+      "fits": [
+        {
+          "coefficients": [
+            -0.09869393444969286,
+            1.6953885437347203
+          ],
+          "gradient_norm": 8.914701992025213e-07,
+          "gradient_updates": 51,
+          "converged": true,
+          "iteration_cap_status": false,
+          "time_cap_status": false,
+          "status": "converged",
+          "step_size": 1.9178470722106316,
+          "squared_spectral_norm": 4091.3440638302272,
+          "model": "baseline"
+        },
+        {
+          "coefficients": [
+            -0.07519058784082672,
+            1.2961440736551078,
+            2.189967238466383
+          ],
+          "gradient_norm": 9.86821352078639e-07,
+          "gradient_updates": 122,
+          "converged": true,
+          "iteration_cap_status": false,
+          "time_cap_status": false,
+          "status": "converged",
+          "step_size": 1.5322316301934225,
+          "squared_spectral_norm": 5141.142706073829,
+          "model": "augmented"
+        }
+      ],
+      "tests": {
+        "P": {
+          "n": 10000,
+          "correct_counts": [
+            8394,
+            9602
+          ],
+          "accuracy": [
+            0.8394,
+            0.9602
+          ],
+          "difference": 0.12080000000000002,
+          "correctness_table": [
+            [
+              108,
+              1498
+            ],
+            [
+              290,
+              8104
+            ]
+          ]
+        },
+        "Q": {
+          "n": 10000,
+          "correct_counts": [
+            8418,
+            2857
+          ],
+          "accuracy": [
+            0.8418,
+            0.2857
+          ],
+          "difference": -0.5561,
+          "correctness_table": [
+            [
+              1489,
+              93
+            ],
+            [
+              5654,
+              2764
+            ]
+          ]
+        }
+      },
+      "status": "completed"
+    },
+    {
+      "seed": 503,
+      "completed": true,
+      "qualifying": true,
+      "fits": [
+        {
+          "coefficients": [
+            -0.02114649171564222,
+            1.751933768942262
+          ],
+          "gradient_norm": 9.637201789211533e-07,
+          "gradient_updates": 47,
+          "converged": true,
+          "iteration_cap_status": false,
+          "time_cap_status": false,
+          "status": "converged",
+          "step_size": 2.130985176208863,
+          "squared_spectral_norm": 3674.1321682173448,
+          "model": "baseline"
+        },
+        {
+          "coefficients": [
+            0.03268745237851052,
+            1.3516363518539756,
+            2.152294730843465
+          ],
+          "gradient_norm": 9.170802073895643e-07,
+          "gradient_updates": 113,
+          "converged": true,
+          "iteration_cap_status": false,
+          "time_cap_status": false,
+          "status": "converged",
+          "step_size": 1.6644056531207556,
+          "squared_spectral_norm": 4726.520564863514,
+          "model": "augmented"
+        }
+      ],
+      "tests": {
+        "P": {
+          "n": 10000,
+          "correct_counts": [
+            8379,
+            9599
+          ],
+          "accuracy": [
+            0.8379,
+            0.9599
+          ],
+          "difference": 0.122,
+          "correctness_table": [
+            [
+              116,
+              1505
+            ],
+            [
+              285,
+              8094
+            ]
+          ]
+        },
+        "Q": {
+          "n": 10000,
+          "correct_counts": [
+            8406,
+            3033
+          ],
+          "accuracy": [
+            0.8406,
+            0.3033
+          ],
+          "difference": -0.5373,
+          "correctness_table": [
+            [
+              1514,
+              80
+            ],
+            [
+              5453,
+              2953
+            ]
+          ]
+        }
+      },
+      "status": "completed"
+    }
+  ],
+  "summary": {
+    "P": {
+      "K": 5,
+      "mean_difference": 0.12120000000000002,
+      "standard_error": 0.00035916569992137395,
+      "qualifying_seeds": [
+        17,
+        43,
+        101,
+        229,
+        503
+      ],
+      "differences": [
+        0.12029999999999996,
+        0.1221000000000001,
+        0.12080000000000002,
+        0.12080000000000002,
+        0.122
+      ]
+    },
+    "Q": {
+      "K": 5,
+      "mean_difference": -0.54152,
+      "standard_error": 0.012554218414540987,
+      "qualifying_seeds": [
+        17,
+        43,
+        101,
+        229,
+        503
+      ],
+      "differences": [
+        -0.5700999999999999,
+        -0.4961,
+        -0.548,
+        -0.5561,
+        -0.5373
+      ]
+    }
+  },
+  "flagged_completed_seeds": [],
+  "incomplete_repeats": 0,
+  "unstarted_seeds": [],
+  "elapsed_seconds": 0.9635906209999998,
+  "scope": "One fixed synthetic setup; not a universal test over classifier families or generators.",
+  "correctness_table_axes": [
+    "baseline correct: 0,1",
+    "augmented correct: 0,1"
+  ]
+}

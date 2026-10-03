@@ -1,0 +1,638 @@
+[
+  {
+    "sequence": 1,
+    "action": "plan",
+    "status": "completed",
+    "summary": "Created the staged conjecture investigation plan.",
+    "inputs": {},
+    "outputs": {
+      "stages": [
+        "interpretation",
+        "ai_general_reasoning",
+        "additional_literature_search",
+        "evidence_extraction",
+        "experiment_planning",
+        "experiment_execution",
+        "evidence_synthesis",
+        "confidence_estimation",
+        "final_report"
+      ]
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:27:47.122844+00:00"
+  },
+  {
+    "sequence": 2,
+    "action": "paper_ingestion",
+    "status": "completed",
+    "summary": "Imported arXiv paper 1911.08731 with 37 passages.",
+    "inputs": {},
+    "outputs": {
+      "source_id": "arxiv:1911.08731",
+      "chunks": 37,
+      "warnings": [
+        "PDF layout extraction is heuristic; equations, columns, and scanned pages require human verification."
+      ]
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:27:51.290954+00:00"
+  },
+  {
+    "sequence": 3,
+    "action": "investigation",
+    "status": "completed",
+    "summary": "Conjecture investigation completed.",
+    "inputs": {},
+    "outputs": {},
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:27:51.415802+00:00"
+  },
+  {
+    "sequence": 4,
+    "action": "interpretation",
+    "status": "completed",
+    "summary": "Parsed conjecture and explicit assumptions.",
+    "inputs": {},
+    "outputs": {
+      "experimentable": true
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:28:29.762208+00:00"
+  },
+  {
+    "sequence": 5,
+    "action": "ai_general_reasoning",
+    "status": "completed",
+    "summary": "Recorded 0 unverified observations and 0 sources to review.",
+    "inputs": {},
+    "outputs": {
+      "observations": [],
+      "source_ids": []
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:28:58.224611+00:00"
+  },
+  {
+    "sequence": 6,
+    "action": "literature_search",
+    "status": "completed",
+    "summary": "Literature search (arXiv): Retrieved 8 arXiv records.",
+    "inputs": {
+      "tool": "arxiv_search",
+      "query": "Synthetic binary classification spurious feature addition ablation in-distribution accuracy out-of-distribution accuracy reversed label correlation empirical risk minimization",
+      "limit": 8
+    },
+    "outputs": {
+      "category": "literature_search",
+      "sources": [
+        {
+          "id": "arxiv:1303.0095v1",
+          "title": "Label-dependent Feature Extraction in Social Networks for Node Classification",
+          "authors": [
+            "Tomasz Kajdanowicz",
+            "Przemyslaw Kazienko",
+            "Piotr Doskocz"
+          ],
+          "abstract": "A new method of feature extraction in the social network for within-network classification is proposed in the paper. The method provides new features calculated by combination of both: network structure information and class labels assigned to nodes. The influence of various features on classification performance has also been studied. The experiments on real-world data have shown that features created owing to the proposed method can lead to significant improvement of classification accuracy.",
+          "year": 2013,
+          "doi": null,
+          "arxiv_id": "1303.0095v1",
+          "url": "https://arxiv.org/pdf/1303.0095v1",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2403.03375v3",
+          "title": "Complexity Matters: Dynamics of Feature Learning in the Presence of Spurious Correlations",
+          "authors": [
+            "GuanWen Qiu",
+            "Da Kuang",
+            "Surbhi Goel"
+          ],
+          "abstract": "Existing research often posits spurious features as easier to learn than core features in neural network optimization, but the impact of their relative simplicity remains under-explored. Moreover, studies mainly focus on end performance rather than the learning dynamics of feature learning. In this paper, we propose a theoretical framework and an associated synthetic dataset grounded in boolean function analysis. This setup allows for fine-grained control over the relative complexity (compared to core features) and correlation strength (with respect to the label) of spurious features to study the dynamics of feature learning under spurious correlations. Our findings uncover several interesting phenomena: (1) stronger spurious correlations or simpler spurious features slow down the learning rate of the core features, (2) two distinct subnetworks are formed to learn core and spurious features separately, (3) learning phases of spurious and core features are not always separable, (4) spurious features are not forgotten even after core features are fully learned. We demonstrate that our findings justify the success of retraining the last layer to remove spurious correlation and also identifies limitations of popular debiasing algorithms that exploit early learning of spurious features. We support our empirical findings with theoretical analyses for the case of learning XOR features with a one-hidden-layer ReLU network.",
+          "year": 2024,
+          "doi": null,
+          "arxiv_id": "2403.03375v3",
+          "url": "https://arxiv.org/pdf/2403.03375v3",
+          "verified": true
+        },
+        {
+          "id": "arxiv:1710.05204v2",
+          "title": "Sequential Design and Spatial Modeling for Portfolio Tail Risk Measurement",
+          "authors": [
+            "Michael Ludkovski",
+            "James Risk"
+          ],
+          "abstract": "We consider calculation of capital requirements when the underlying economic scenarios are determined by simulatable risk factors. In the respective nested simulation framework, the goal is to estimate portfolio tail risk, quantified via VaR or TVaR of a given collection of future economic scenarios representing factor levels at the risk horizon. Traditionally, evaluating portfolio losses of an outer scenario is done by computing a conditional expectation via inner-level Monte Carlo and is computationally expensive. We introduce several inter-related machine learning techniques to speed up this computation, in particular by properly accounting for the simulation noise. Our main workhorse is an advanced Gaussian Process (GP) regression approach which uses nonparametric spatial modeling to efficiently learn the relationship between the stochastic factors defining scenarios and corresponding portfolio value. Leveraging this emulator, we develop sequential algorithms that adaptively allocate inner simulation budgets to target the quantile region. The GP framework also yields better uncertainty quantification for the resulting VaR/TVaR estimators that reduces bias and variance compared to existing methods. We illustrate the proposed strategies with two case-studies in two and six dimensions.",
+          "year": 2017,
+          "doi": null,
+          "arxiv_id": "1710.05204v2",
+          "url": "https://arxiv.org/pdf/1710.05204v2",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2505.05704v1",
+          "title": "Assessing Robustness to Spurious Correlations in Post-Training Language Models",
+          "authors": [
+            "Julia Shuieh",
+            "Prasann Singhal",
+            "Apaar Shanker",
+            "John Heyer",
+            "George Pu",
+            "Samuel Denton"
+          ],
+          "abstract": "Supervised and preference-based fine-tuning techniques have become popular for aligning large language models (LLMs) with user intent and correctness criteria. However, real-world training data often exhibits spurious correlations -- arising from biases, dataset artifacts, or other \"shortcut\" features -- that can compromise a model's performance or generalization. In this paper, we systematically evaluate three post-training algorithms -- Supervised Fine-Tuning (SFT), Direct Preference Optimization (DPO), and KTO (Kahneman-Tversky Optimization) -- across a diverse set of synthetic tasks and spuriousness conditions. Our tasks span mathematical reasoning, constrained instruction-following, and document-grounded question answering. We vary the degree of spurious correlation (10% vs. 90%) and investigate two forms of artifacts: \"Feature Ambiguity\" and \"Distributional Narrowness.\" Our results show that the models often but not always degrade under higher spuriousness. The preference-based methods (DPO/KTO) can demonstrate relative robustness in mathematical reasoning tasks. By contrast, SFT maintains stronger performance in complex, context-intensive tasks. These findings highlight that no single post-training strategy universally outperforms in all scenarios; the best choice depends on the type of target task and the nature of spurious correlations.",
+          "year": 2025,
+          "doi": null,
+          "arxiv_id": "2505.05704v1",
+          "url": "https://arxiv.org/pdf/2505.05704v1",
+          "verified": true
+        },
+        {
+          "id": "arxiv:1012.4674v4",
+          "title": "Marking Systemic Portfolio Risk with Application to the Correlation Skew of Equity Baskets",
+          "authors": [
+            "Alex Langnau",
+            "Daniel Cangemi"
+          ],
+          "abstract": "The downside risk of a portfolio of (equity)assets is generally substantially higher than the downside risk of its components. In particular in times of crises when assets tend to have high correlation, the understanding of this difference can be crucial in managing systemic risk of a portfolio. In this paper we generalize Merton's option formula in the presence jumps to the multi-asset case. It is shown how common jumps across assets provide an intuitive and powerful tool to describe systemic risk that is consistent with data. The methodology provides a new way to mark and risk-manage systemic risk of portfolios in a systematic way.",
+          "year": 2010,
+          "doi": null,
+          "arxiv_id": "1012.4674v4",
+          "url": "https://arxiv.org/pdf/1012.4674v4",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2609.07897v1",
+          "title": "The Accuracy Paradox: Empirical Diagnostic of Default Decision Thresholds in Multi-Label Enzyme Commission Prediction [With Code]",
+          "authors": [
+            "Bilal Ahmad",
+            "Rajed Mehmood"
+          ],
+          "abstract": "Automated prediction of Enzyme Commission (EC) numbers plays a central role in functional annotation and computational drug discovery. However, standard multi-label machine learning pipelines frequently rely on default decision thresholds (t=0.50), assuming balanced prior distributions across target heads. In this study, we present a systematic empirical diagnostic of uncalibrated fixed decision boundaries operating under severe class imbalance across N = 14,096 annotated compounds categorized into six primary EC classes (EC1-EC6). Our results highlight a pronounced Accuracy Paradox: while the multi-label system achieves a deceivingly high mean accuracy of 77.16%, the macro F1-score (0.3976) and macro recall (0.3872) reveal severe predictive breakdown. Majority target classes suffer from hyper-sensitivity and over-prediction, whereas minority classes exhibit sharp recall decay, culminating in a total decision boundary collapse for EC6 (Recall = 0.00%) despite underlying discriminative power (ROC-AUC = 0.5857). Feature correlation analysis further reveals high linear redundancy among topological indices relative to fingerprint density metrics. Ultimately, this diagnostic study demonstrates that standard point predictions mask critical errors in bioinformatics workflows. We establish target-specific threshold optimization and post-hoc conformal calibration as essential, open-source post-processing safeguards for reliable applied machine learning and deep learning architectures.",
+          "year": 2026,
+          "doi": null,
+          "arxiv_id": "2609.07897v1",
+          "url": "https://arxiv.org/pdf/2609.07897v1",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2107.03979v1",
+          "title": "On the Selection of Loss Severity Distributions to Model Operational Risk",
+          "authors": [
+            "Daniel Hadley",
+            "Harry Joe",
+            "Natalia Nolde"
+          ],
+          "abstract": "Accurate modeling of operational risk is important for a bank and the finance industry as a whole to prepare for potentially catastrophic losses. One approach to modeling operational is the loss distribution approach, which requires a bank to group operational losses into risk categories and select a loss frequency and severity distribution for each category. This approach estimates the annual operational loss distribution, and a bank must set aside capital, called regulatory capital, equal to the 0.999 quantile of this estimated distribution. In practice, this approach may produce unstable regulatory capital calculations from year-to-year as selected loss severity distribution families change. This paper presents truncation probability estimates for loss severity data and a consistent quantile scoring function on annual loss data as useful severity distribution selection criteria that may lead to more stable regulatory capital. Additionally, the Sinh-arcSinh distribution is another flexible candidate family for modeling loss severities that can be easily estimated using the maximum likelihood approach. Finally, we recommend that loss frequencies below the minimum reporting threshold be collected so that loss severity data can be treated as censored data.",
+          "year": 2021,
+          "doi": null,
+          "arxiv_id": "2107.03979v1",
+          "url": "https://arxiv.org/pdf/2107.03979v1",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2305.11615v2",
+          "title": "SFP: Spurious Feature-targeted Pruning for Out-of-Distribution Generalization",
+          "authors": [
+            "Yingchun Wang",
+            "Jingcai Guo",
+            "Yi Liu",
+            "Song Guo",
+            "Weizhan Zhang",
+            "Xiangyong Cao",
+            "Qinghua Zheng"
+          ],
+          "abstract": "Model substructure learning aims to find an invariant network substructure that can have better out-of-distribution (OOD) generalization than the original full structure. Existing works usually search the invariant substructure using modular risk minimization (MRM) with fully exposed out-domain data, which may bring about two drawbacks: 1) Unfairness, due to the dependence of the full exposure of out-domain data; and 2) Sub-optimal OOD generalization, due to the equally feature-untargeted pruning on the whole data distribution. Based on the idea that in-distribution (ID) data with spurious features may have a lower experience risk, in this paper, we propose a novel Spurious Feature-targeted model Pruning framework, dubbed SFP, to automatically explore invariant substructures without referring to the above drawbacks. Specifically, SFP identifies spurious features within ID instances during training using our theoretically verified task loss, upon which, SFP attenuates the corresponding feature projections in model space to achieve the so-called spurious feature-targeted pruning. This is typically done by removing network branches with strong dependencies on identified spurious features, thus SFP can push the model learning toward invariant features and pull that out of spurious features and devise optimal OOD generalization. Moreover, we also conduct detailed theoretical analysis to provide the rationality guarantee and a proof framework for OOD structures via model sparsity, and for the first time, reveal how a highly biased data distribution affects the model's OOD generalization. Experiments on various OOD datasets show that SFP can significantly outperform both structure-based and non-structure-based OOD generalization SOTAs, with accuracy improvement up to 4.72% and 23.35%, respectively",
+          "year": 2023,
+          "doi": null,
+          "arxiv_id": "2305.11615v2",
+          "url": "https://arxiv.org/pdf/2305.11615v2",
+          "verified": true
+        }
+      ]
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:29:03.473144+00:00"
+  },
+  {
+    "sequence": 7,
+    "action": "literature_search",
+    "status": "completed",
+    "summary": "Literature search (Crossref): Retrieved 8 scholarly records.",
+    "inputs": {
+      "tool": "literature_search",
+      "query": "Spurious correlations synthetic classification logistic regression regularization sample size stable signal strength correlation shift average accuracy worst-group accuracy group distributionally robust optimization",
+      "limit": 8
+    },
+    "outputs": {
+      "category": "literature_search",
+      "sources": [
+        {
+          "id": "doi:10.2139/ssrn.1412208",
+          "title": "Applying CHAID for Logistic Regression Diagnostics and Classification Accuracy Improvement",
+          "authors": [
+            "Evgeny Antipov",
+            "Elena Pokryshevskaya"
+          ],
+          "abstract": "<jats:p>In this study a CHAID-based approach to detecting classification accuracy heterogeneity across segments of observations is proposed. This helps to solve some important problems, facing a model-builder:\n\n1.\tHow to automatically detect segments in which the model significantly underperforms?\n\n2.\tHow to incorporate the knowledge about classification accuracy heterogeneity across segments to partition observations in order to achieve better predictive accuracy?\n\nThe approach was applied to churn data from the UCI Repository of Machine Learning Databases. By splitting the dataset into 4 parts, which are based on the decision tree, and building a separate logistic regression scoring model for each segment we increased the accuracy by more than 7 percentage points on the test sample. Significant increase in recall and precision was also observed. It was shown that different segments may have absolutely different churn predictors. Therefore such a partitioning gives a better insight into factors influencing customer behavior.</jats:p>",
+          "year": 2009,
+          "doi": "10.2139/ssrn.1412208",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.2139/ssrn.1412208",
+          "verified": true
+        },
+        {
+          "id": "doi:10.3390/math14193574",
+          "title": "Stochastic Mirror-Prox Optimisation of Group Distributionally Robust Multimodal Logistic Regression for Multilingual Fact-Checking Verdict Prediction",
+          "authors": [
+            "Shuyun Li",
+            "Fan Si",
+            "Dongxu Mo",
+            "Chao He"
+          ],
+          "abstract": "<jats:p>This paper asks whether group distributionally robust optimisation raises the worst-group macro-F1 of a block-masked multimodal logistic regression with availability indicators for multilingual fact-checking. Stochastic Mirror-Prox solves the resulting convex–concave saddle-point problem. The corpus pools 49,584 X-Fact and MediaEval records with 90 language labels. On the in-domain split, the robust solution lifts worst-group macro-F1 from 0.313 under pooled empirical risk minimisation to 0.401 (95% interval of the gain [0.025,0.134]). Overall macro-F1 drops by 0.040, and dispersion of balanced accuracy across languages falls from 0.166 to 0.131. The gain lies in X-Fact claim groups and the cost in MediaEval posts (macro-F1 0.887 to 0.809). Removing the availability indicators moves no worst-group or overall macro-F1 by more than 0.007. The worst-group difference is negative on unseen languages and not resolved on unseen sites or events. A Friedman test detects no difference between solvers in typical group performance. At equal numbers of sampled records, stochastic mirror descent reaches a smaller mean duality gap than Mirror-Prox at each measured mini-batch size from 2 to 128. On this instance, extrapolation does not repay its second call.</jats:p>",
+          "year": 2026,
+          "doi": "10.3390/math14193574",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.3390/math14193574",
+          "verified": true
+        },
+        {
+          "id": "doi:10.7717/peerj.10124/table-3",
+          "title": "Table 3: Classification accuracy results for classifiers: Random Forest (RF), Linear Support Vector (LSV) and Logistic Regression (LR).",
+          "authors": [],
+          "abstract": "",
+          "year": null,
+          "doi": "10.7717/peerj.10124/table-3",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.7717/peerj.10124/table-3",
+          "verified": true
+        },
+        {
+          "id": "doi:10.7554/elife.00801.006",
+          "title": "Figure 3—figure supplement 1. Separate activity and accuracy maps for trained and untrained sequences.",
+          "authors": [],
+          "abstract": "",
+          "year": null,
+          "doi": "10.7554/elife.00801.006",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.7554/elife.00801.006",
+          "verified": true
+        },
+        {
+          "id": "doi:10.1109/incacct61598.2024.10551022",
+          "title": "Predictive Modeling in the Cloud with Logistic Regression for High-Accuracy Biomedical Signal Classification",
+          "authors": [
+            "P. Solainayagi"
+          ],
+          "abstract": "",
+          "year": 2024,
+          "doi": "10.1109/incacct61598.2024.10551022",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.1109/incacct61598.2024.10551022",
+          "verified": true
+        },
+        {
+          "id": "doi:10.7554/elife.40368.004",
+          "title": "Figure 3. How majority voting can be optimally replaced by quorum decisions.",
+          "authors": [],
+          "abstract": "",
+          "year": null,
+          "doi": "10.7554/elife.40368.004",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.7554/elife.40368.004",
+          "verified": true
+        },
+        {
+          "id": "doi:10.7717/peerjcs.2929/fig-7",
+          "title": "Figure 7: Training and testing accuracy of logistic regression.",
+          "authors": [],
+          "abstract": "",
+          "year": null,
+          "doi": "10.7717/peerjcs.2929/fig-7",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.7717/peerjcs.2929/fig-7",
+          "verified": true
+        },
+        {
+          "id": "doi:10.1109/wsc68292.2025.11339051",
+          "title": "Distributionally Robust Logistic Regression with Missing Data",
+          "authors": [
+            "Weicong Chen",
+            "Hoda Bidkhori"
+          ],
+          "abstract": "",
+          "year": 2025,
+          "doi": "10.1109/wsc68292.2025.11339051",
+          "arxiv_id": null,
+          "url": "https://doi.org/10.1109/wsc68292.2025.11339051",
+          "verified": true
+        }
+      ]
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:29:03.774318+00:00"
+  },
+  {
+    "sequence": 8,
+    "action": "literature_search",
+    "status": "completed",
+    "summary": "Literature search (arXiv): Retrieved 8 arXiv records.",
+    "inputs": {
+      "tool": "arxiv_search",
+      "query": "Counterexamples spurious feature augmentation accuracy robustness tradeoff binary classification redundant features feature selection invariant prediction correlation reversal",
+      "limit": 8
+    },
+    "outputs": {
+      "category": "literature_search",
+      "sources": [
+        {
+          "id": "arxiv:1303.0095v1",
+          "title": "Label-dependent Feature Extraction in Social Networks for Node Classification",
+          "authors": [
+            "Tomasz Kajdanowicz",
+            "Przemyslaw Kazienko",
+            "Piotr Doskocz"
+          ],
+          "abstract": "A new method of feature extraction in the social network for within-network classification is proposed in the paper. The method provides new features calculated by combination of both: network structure information and class labels assigned to nodes. The influence of various features on classification performance has also been studied. The experiments on real-world data have shown that features created owing to the proposed method can lead to significant improvement of classification accuracy.",
+          "year": 2013,
+          "doi": null,
+          "arxiv_id": "1303.0095v1",
+          "url": "https://arxiv.org/pdf/1303.0095v1",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2403.03375v3",
+          "title": "Complexity Matters: Dynamics of Feature Learning in the Presence of Spurious Correlations",
+          "authors": [
+            "GuanWen Qiu",
+            "Da Kuang",
+            "Surbhi Goel"
+          ],
+          "abstract": "Existing research often posits spurious features as easier to learn than core features in neural network optimization, but the impact of their relative simplicity remains under-explored. Moreover, studies mainly focus on end performance rather than the learning dynamics of feature learning. In this paper, we propose a theoretical framework and an associated synthetic dataset grounded in boolean function analysis. This setup allows for fine-grained control over the relative complexity (compared to core features) and correlation strength (with respect to the label) of spurious features to study the dynamics of feature learning under spurious correlations. Our findings uncover several interesting phenomena: (1) stronger spurious correlations or simpler spurious features slow down the learning rate of the core features, (2) two distinct subnetworks are formed to learn core and spurious features separately, (3) learning phases of spurious and core features are not always separable, (4) spurious features are not forgotten even after core features are fully learned. We demonstrate that our findings justify the success of retraining the last layer to remove spurious correlation and also identifies limitations of popular debiasing algorithms that exploit early learning of spurious features. We support our empirical findings with theoretical analyses for the case of learning XOR features with a one-hidden-layer ReLU network.",
+          "year": 2024,
+          "doi": null,
+          "arxiv_id": "2403.03375v3",
+          "url": "https://arxiv.org/pdf/2403.03375v3",
+          "verified": true
+        },
+        {
+          "id": "arxiv:1607.01327v8",
+          "title": "Feature Selection Library (MATLAB Toolbox)",
+          "authors": [
+            "Giorgio Roffo"
+          ],
+          "abstract": "The Feature Selection Library (FSLib) introduces a comprehensive suite of feature selection (FS) algorithms for MATLAB, aimed at improving machine learning and data mining tasks. FSLib encompasses filter, embedded, and wrapper methods to cater to diverse FS requirements. Filter methods focus on the inherent characteristics of features, embedded methods incorporate FS within model training, and wrapper methods assess features through model performance metrics. By enabling effective feature selection, FSLib addresses the curse of dimensionality, reduces computational load, and enhances model generalizability. The elimination of redundant features through FSLib streamlines the training process, improving efficiency and scalability. This facilitates faster model development and boosts key performance indicators such as accuracy, precision, and recall by focusing on vital features. Moreover, FSLib contributes to data interpretability by revealing important features, aiding in pattern recognition and understanding. Overall, FSLib provides a versatile framework that not only simplifies feature selection but also significantly benefits the machine learning and data mining ecosystem by offering a wide range of algorithms, reducing dimensionality, accelerating model training, improving model outcomes, and enhancing data insights.",
+          "year": 2016,
+          "doi": null,
+          "arxiv_id": "1607.01327v8",
+          "url": "https://arxiv.org/pdf/1607.01327v8",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2209.02746v1",
+          "title": "Handcrafted Feature Selection Techniques for Pattern Recognition: A Survey",
+          "authors": [
+            "Alysson Ribeiro da Silva",
+            "Camila Guedes Silveira"
+          ],
+          "abstract": "The accuracy of a classifier, when performing Pattern recognition, is mostly tied to the quality and representativeness of the input feature vector. Feature Selection is a process that allows for representing information properly and may increase the accuracy of a classifier. This process is responsible for finding the best possible features, thus allowing us to identify to which class a pattern belongs. Feature selection methods can be categorized as Filters, Wrappers, and Embed. This paper presents a survey on some Filters and Wrapper methods for handcrafted feature selection. Some discussions, with regard to the data structure, processing time, and ability to well represent a feature vector, are also provided in order to explicitly show how appropriate some methods are in order to perform feature selection. Therefore, the presented feature selection methods can be accurate and efficient if applied considering their positives and negatives, finding which one fits best the problem's domain may be the hardest task.",
+          "year": 2022,
+          "doi": null,
+          "arxiv_id": "2209.02746v1",
+          "url": "https://arxiv.org/pdf/2209.02746v1",
+          "verified": true
+        },
+        {
+          "id": "arxiv:1804.05589v1",
+          "title": "SPSA-FSR: Simultaneous Perturbation Stochastic Approximation for Feature Selection and Ranking",
+          "authors": [
+            "Zeren D. Yenice",
+            "Niranjan Adhikari",
+            "Yong Kai Wong",
+            "Vural Aksakalli",
+            "Alev Taskin Gumus",
+            "Babak Abbasi"
+          ],
+          "abstract": "This manuscript presents the following: (1) an improved version of the Binary Simultaneous Perturbation Stochastic Approximation (SPSA) Method for feature selection in machine learning (Aksakalli and Malekipirbazari, Pattern Recognition Letters, Vol. 75, 2016) based on non-monotone iteration gains computed via the Barzilai and Borwein (BB) method, (2) its adaptation for feature ranking, and (3) comparison against popular methods on public benchmark datasets. The improved method, which we call SPSA-FSR, dramatically reduces the number of iterations required for convergence without impacting solution quality. SPSA-FSR can be used for feature ranking and feature selection both for classification and regression problems. After a review of the current state-of-the-art, we discuss our improvements in detail and present three sets of computational experiments: (1) comparison of SPSA-FS as a (wrapper) feature selection method against sequential methods as well as genetic algorithms, (2) comparison of SPSA-FS as a feature ranking method in a classification setting against random forest importance, chi-squared, and information main methods, and (3) comparison of SPSA-FS as a feature ranking method in a regression setting against minimum redundancy maximum relevance (MRMR), RELIEF, and linear correlation methods. The number of features in the datasets we use range from a few dozens to a few thousands. Our results indicate that SPSA-FS converges to a good feature set in no more than 100 iterations and therefore it is quite fast for a wrapper method. SPSA-FS also outperforms popular feature selection as well as feature ranking methods in majority of test cases, sometimes by a large margin, and it stands as a promising new feature selection and ranking method.",
+          "year": 2018,
+          "doi": null,
+          "arxiv_id": "1804.05589v1",
+          "url": "https://arxiv.org/pdf/1804.05589v1",
+          "verified": true
+        },
+        {
+          "id": "arxiv:1506.05173v2",
+          "title": "Feature Selection for Ridge Regression with Provable Guarantees",
+          "authors": [
+            "Saurabh Paul",
+            "Petros Drineas"
+          ],
+          "abstract": "We introduce single-set spectral sparsification as a deterministic sampling based feature selection technique for regularized least squares classification, which is the classification analogue to ridge regression. The method is unsupervised and gives worst-case guarantees of the generalization power of the classification function after feature selection with respect to the classification function obtained using all features. We also introduce leverage-score sampling as an unsupervised randomized feature selection method for ridge regression. We provide risk bounds for both single-set spectral sparsification and leverage-score sampling on ridge regression in the fixed design setting and show that the risk in the sampled space is comparable to the risk in the full-feature space. We perform experiments on synthetic and real-world datasets, namely a subset of TechTC-300 datasets, to support our theory. Experimental results indicate that the proposed methods perform better than the existing feature selection methods.",
+          "year": 2015,
+          "doi": null,
+          "arxiv_id": "1506.05173v2",
+          "url": "https://arxiv.org/pdf/1506.05173v2",
+          "verified": true
+        },
+        {
+          "id": "arxiv:2302.13221v4",
+          "title": "Beyond Discrete Selection: Continuous Embedding Space Optimization for Generative Feature Selection",
+          "authors": [
+            "Meng Xiao",
+            "Dongjie Wang",
+            "Min Wu",
+            "Pengfei Wang",
+            "Yuanchun Zhou",
+            "Yanjie Fu"
+          ],
+          "abstract": "The goal of Feature Selection - comprising filter, wrapper, and embedded approaches - is to find the optimal feature subset for designated downstream tasks. Nevertheless, current feature selection methods are limited by: 1) the selection criteria of these methods are varied for different domains, making them hard to generalize; 2) the selection performance of these approaches drops significantly when processing high-dimensional feature space coupled with small sample size. In light of these challenges, we pose the question: can selected feature subsets be more robust, accurate, and input dimensionality agnostic? In this paper, we reformulate the feature selection problem as a deep differentiable optimization task and propose a new research perspective: conceptualizing discrete feature subsetting as continuous embedding space optimization. We introduce a novel and principled framework that encompasses a sequential encoder, an accuracy evaluator, a sequential decoder, and a gradient ascent optimizer. This comprehensive framework includes four important steps: preparation of features-accuracy training data, deep feature subset embedding, gradient-optimized search, and feature subset reconstruction. Specifically, we utilize reinforcement feature selection learning to generate diverse and high-quality training data and enhance generalization. By optimizing reconstruction and accuracy losses, we embed feature selection knowledge into a continuous space using an encoder-evaluator-decoder model structure. We employ a gradient ascent search algorithm to find better embeddings in the learned embedding space. Furthermore, we reconstruct feature selection solutions using these embeddings and select the feature subset with the highest performance for downstream tasks as the optimal subset.",
+          "year": 2023,
+          "doi": null,
+          "arxiv_id": "2302.13221v4",
+          "url": "https://arxiv.org/pdf/2302.13221v4",
+          "verified": true
+        },
+        {
+          "id": "arxiv:1708.08750v1",
+          "title": "Multi-Stage Feature Selection Based Intelligent Classifier for Classification of Incipient Stage Fire in Building",
+          "authors": [
+            "Allan Melvin Andrew",
+            "Ammar Zakaria",
+            "Shaharil Mad Saad",
+            "Ali Yeon Md Shakaff"
+          ],
+          "abstract": "In this study, an early fire detection algorithm has been proposed based on low cost array sensing system, utilizing gas sensors, dust particles and ambient sensors such as temperature and humidity sensor. The odor or smell-print emanated from various fire sources and building construction materials at early stage are measured. For this purpose, odor profile data from five common fire sources and three common building construction materials were used to develop the classification model. Normalized feature extractions of the smell print data were performed before subjected to prediction classifier. These features represent the odor signals in the time domain. The obtained features undergo the proposed multi-stage feature selection technique and lastly, further reduced by Principal Component Analysis (PCA), a dimension reduction technique. The hybrid PCA-PNN based approach has been applied on different datasets from in-house developed system and the portable electronic nose unit. Experimental classification results show that the dimension reduction process performed by PCA has improved the classification accuracy and provided high reliability, regardless of ambient temperature and humidity variation, baseline sensor drift, the different gas concentration level and exposure towards different heating temperature range.",
+          "year": 2017,
+          "doi": null,
+          "arxiv_id": "1708.08750v1",
+          "url": "https://arxiv.org/pdf/1708.08750v1",
+          "verified": true
+        }
+      ]
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:29:05.261948+00:00"
+  },
+  {
+    "sequence": 9,
+    "action": "source_selection",
+    "status": "completed",
+    "summary": "Selected 4 sources, including attached and AI reasoning sources automatically.",
+    "inputs": {},
+    "outputs": {
+      "automatically_selected_source_ids": [
+        "arxiv:1911.08731"
+      ],
+      "selected_source_ids": [
+        "arxiv:1911.08731",
+        "arxiv:2403.03375v3",
+        "arxiv:2305.11615v2",
+        "arxiv:2505.05704v1"
+      ]
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:29:09.478236+00:00"
+  },
+  {
+    "sequence": 10,
+    "action": "additional_literature_search",
+    "status": "completed",
+    "summary": "Searched 3 targeted queries; found 22 additional candidates; 0 literature search failures across the investigation.",
+    "inputs": {},
+    "outputs": {
+      "queries": [
+        "Synthetic binary classification spurious feature addition ablation in-distribution accuracy out-of-distribution accuracy reversed label correlation empirical risk minimization",
+        "Spurious correlations synthetic classification logistic regression regularization sample size stable signal strength correlation shift average accuracy worst-group accuracy group distributionally robust optimization",
+        "Counterexamples spurious feature augmentation accuracy robustness tradeoff binary classification redundant features feature selection invariant prediction correlation reversal"
+      ],
+      "source_ids": [
+        "arxiv:1303.0095v1",
+        "arxiv:2403.03375v3",
+        "arxiv:1710.05204v2",
+        "arxiv:2505.05704v1",
+        "arxiv:1012.4674v4",
+        "arxiv:2609.07897v1",
+        "arxiv:2107.03979v1",
+        "arxiv:2305.11615v2",
+        "doi:10.2139/ssrn.1412208",
+        "doi:10.3390/math14193574",
+        "doi:10.7717/peerj.10124/table-3",
+        "doi:10.7554/elife.00801.006",
+        "doi:10.1109/incacct61598.2024.10551022",
+        "doi:10.7554/elife.40368.004",
+        "doi:10.7717/peerjcs.2929/fig-7",
+        "doi:10.1109/wsc68292.2025.11339051",
+        "arxiv:1607.01327v8",
+        "arxiv:2209.02746v1",
+        "arxiv:1804.05589v1",
+        "arxiv:1506.05173v2",
+        "arxiv:2302.13221v4",
+        "arxiv:1708.08750v1"
+      ],
+      "search_failures": 0
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:29:09.494771+00:00"
+  },
+  {
+    "sequence": 11,
+    "action": "evidence_extraction",
+    "status": "completed",
+    "summary": "Recorded 4 full-text inspections and extracted 3 grounded items.",
+    "inputs": {},
+    "outputs": {
+      "evidence": 3
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:29:46.969864+00:00"
+  },
+  {
+    "sequence": 12,
+    "action": "experiment_planning",
+    "status": "completed",
+    "summary": "Planned 1 controlled experiments.",
+    "inputs": {},
+    "outputs": {
+      "plans": 1
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:31:25.608546+00:00"
+  },
+  {
+    "sequence": 13,
+    "action": "experiment_attempt",
+    "status": "completed",
+    "summary": "Experiment Feature augmentation under correlation reversal completed execution.",
+    "inputs": {},
+    "outputs": {
+      "category": "experiment_execution",
+      "design_id": "design_2172f5fb17ac",
+      "experiment_id": "experiment_c20382037202",
+      "runtime_seconds": 7.862710000015795
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:31:33.502426+00:00"
+  },
+  {
+    "sequence": 14,
+    "action": "experiment_visualization",
+    "status": "completed",
+    "summary": "Generated and recorded a visualization from result.json.",
+    "inputs": {},
+    "outputs": {
+      "experiment_id": "experiment_c20382037202",
+      "artifact": "artifacts/attempt-1317262852d9428abaa0eee8dfcb2f92/2c0c4240-b1db-4504-b222-03f8ea71112e/experiments/visualization_e10d13c02bb6/visualization.svg"
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:31:34.300840+00:00"
+  },
+  {
+    "sequence": 15,
+    "action": "experiment_execution",
+    "status": "completed",
+    "summary": "Executed 1 experiments; 0 execution failures, 0 interpretation failures, 0 visualization failures.",
+    "inputs": {},
+    "outputs": {
+      "executed": 1,
+      "execution_failures": 0,
+      "interpretation_failures": 0,
+      "visualization_failures": 0
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:31:48.799978+00:00"
+  },
+  {
+    "sequence": 16,
+    "action": "evidence_synthesis",
+    "status": "completed",
+    "summary": "Separated support, contradictions, qualifications, and unresolved questions.",
+    "inputs": {},
+    "outputs": {},
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:32:12.431023+00:00"
+  },
+  {
+    "sequence": 17,
+    "action": "confidence_estimation",
+    "status": "completed",
+    "summary": "Qualitative assessment: Both predicted accuracy comparisons are supported in the tested synthetic logistic-classification setting. The evidence establishes that the phenomenon occurs, but does not establish how typical it is across other classifiers, generators, or correlation strengths. I interpret the unspecified scope as a proposed empirical phenomenon, not as a universal guarantee for every binary classifier and synthetic distribution. Under that interpretation, Experiment 1: Feature augmentation under correlation reversal provides direct support for both comparisons.\n\nAll five independent repeats showed strictly higher in-distribution accuracy and strictly lower reversed-distribution accuracy for the augmented classifier. In-distribution accuracy ranged from 0.8373 to 0.8394 for the baseline and from 0.9576 to 0.9602 for the augmented classifier. Under reversal, the corresponding ranges were 0.8391–0.8418 and 0.2690–0.3457. The mean paired empirical differences were \\(\\overline{\\Delta}_P=0.12120\\) and \\(\\overline{\\Delta}_Q=-0.54152\\). Thus, the experiment demonstrates degradation relative to the baseline under reversal, not merely a decline in the augmented classifier's own accuracy.\n\nThe controls make this a meaningful feature-addition comparison. Both fits used the same training examples, original features, labels, regularization coefficient, and fitting tolerance. Both classifiers were evaluated on the same test examples within each repeat. Only the added feature's conditional distribution changed under reversal; the original feature-label law remained fixed. The method was full-batch gradient descent for logistic empirical risk minimization with an L2 penalty, including intercept regularization. All ten fits converged, and no repeats were incomplete or flagged. The executed design contained five repeats, rather than the nominal initial thirty; the smaller count was a design revision, not execution truncation.\n\nThe tested construction used a Gaussian original-feature signal with \\(\\mu=1\\), a binary added feature with \\(p=0.95\\), and regularization strength \\(\\lambda=0.01\\). Added-feature agreement with the label changed from 0.95 to 0.05 under reversal. Each repeat used 2,000 training examples and 10,000 examples per test law. The reported across-repeat standard errors were approximately 0.000359 in distribution and 0.012554 under reversal, in accuracy proportions. These measurements support the observed signs, but finite-test estimates are not proofs of the corresponding population inequalities. No confidence intervals, hypothesis tests, or analytical population evaluations were supplied.\n\nThe inspected literature passages provide context rather than a directly matching confirmation. [Distributionally Robust Neural Networks for Group Shifts: On the Importance of Regularization for Worst-Case Generalization](https://arxiv.org/abs/1911.08731) documents high average accuracy alongside poor worst-group performance and improvements from regularized group DRO. Those comparisons change training methods, and worst-group accuracy is not average accuracy under a reversed test distribution. [Complexity Matters: Dynamics of Feature Learning in the Presence of Spurious Correlations](https://arxiv.org/abs/2403.03375v3) reports method-dependent core-feature learning after retraining, not the two paired accuracy differences. [SFP: Spurious Feature-targeted Pruning for Out-of-Distribution Generalization](https://arxiv.org/abs/2305.11615v2) describes constructed spurious-background benchmarks, but the supplied passage contains no matching accuracy comparison.\n\n[Assessing Robustness to Spurious Correlations in Post-Training Language Models](https://arxiv.org/abs/2505.05704v1) reports stable or slightly improved accuracy in some setups as spuriousness increases. This qualifies a broad expectation of uniformly harmful spuriousness. It does not contradict the present experiment: increasing spuriousness in language-model post-training is different from reversing an added feature's correlation in this paired binary-classification comparison.\n\nGenerality remains unresolved because only one generator, classifier family, and parameter configuration were tested. There was no sweep over stable-signal strength, correlation strength, regularization, feature scale, or sample size. Unequal-magnitude reversal and conditional dependence between features were also untested. Redundant or ignored added features are relevant boundary cases for strict inequalities, but they are not supplied empirical counterexamples. These limits restrict extrapolation; they do not negate the clear occurrence observed in Experiment 1.",
+    "inputs": {},
+    "outputs": {
+      "method": "llm_judgment",
+      "model": "openai:gpt-6.1-sol"
+    },
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:32:31.091015+00:00"
+  },
+  {
+    "sequence": 18,
+    "action": "final_report",
+    "status": "completed",
+    "summary": "Generated a traceable conjecture assessment.",
+    "inputs": {},
+    "outputs": {},
+    "latency_ms": 0.0,
+    "created_at": "2026-10-03T21:32:31.113355+00:00"
+  }
+]

@@ -1,0 +1,261 @@
+[
+  {
+    "kind": "statement",
+    "text": "Definition 3.2 (Data quality).  Given a training setD, we define its data quality asq(D)  =\nE(x,y)∈DP(Y =y|x)",
+    "page": 3,
+    "start": 4131,
+    "end": 4240
+  },
+  {
+    "kind": "statement",
+    "text": "Definition 4.1 (TV distance).  LetA be acollection of the subsets of the labelsample spaceY. The\nTV distance between two probability distributionsP(Y) andP(Y′) can be defined as∥P(Y)−\nP(Y′)∥TV = supJ∈A|P(Y∈J)−P(Y′∈J)|.",
+    "page": 4,
+    "start": 2216,
+    "end": 2434
+  },
+  {
+    "kind": "statement",
+    "text": "Lemma 4.1.  Assumef(x)y isL-locally Lipschitz aroundx with bounded Hessian.  Letσm =\ninfz∈Bε(x)σmin(∇2f(z)y)> 0 andσM = supz∈Bε(x)σmax(∇2f(z)y)> 0. Hereσmin andσmax\ndenote the minimum and maximum eigenvalues of the Hessian, respectively. We then have",
+    "page": 4,
+    "start": 2818,
+    "end": 3068
+  },
+  {
+    "kind": "statement",
+    "text": "Lemma 4.2.  Given a training setD ={(xi,˜yi)}i∈[N], the label noise is lower-bounded by the\nmismatchbetweenthe truelabeldistributionandtheassignedlabel distribution. Specifically, with\nprobability1−δ, we have\n                                                                          r   1\n                           pe(D)≥Ex∥P(˜Y|x)−P(Y|x)∥TV−                       2N log 2δ                                  (3)",
+    "page": 5,
+    "start": 851,
+    "end": 1263
+  },
+  {
+    "kind": "statement",
+    "text": "Lemma 4.4.  DenoteS ={x : (x,y)∈D} as the collection of all training inputs. Letρ≥ 1 and\nC be anρε-external covering ofS with covering numberNρε. Letfθ be a probabilistic classifier",
+    "page": 6,
+    "start": 3166,
+    "end": 3347
+  },
+  {
+    "kind": "statement",
+    "text": "Theorem 4.5. Instantiate the notations of Lemma 4.4. For anyx∈Nε(ˆS), with probability at least\n1−3δ, we have\n                                                   3                                         r    1\n   pe(D′)≥ε       (1−Exfθ(x)y)σm2Lθ−2ρ                2− 1K      Lθ +L        −ε2σM4−ξ           2N log 2δ,   (7)",
+    "page": 7,
+    "start": 1328,
+    "end": 1651
+  },
+  {
+    "kind": "statement",
+    "text": "Theorem 5.1 (Temperature scaling can reduce the distribution mismatch).  Letfθ(x;T) denote the\npredictive probability of a probabilistic classifier scaled by temperatureT, namelyfθ(x;T)j =\nexp(zj/T)/(Pjexp(zj/T)), wherez is the logits of the classifier fromx. Letx′ be an adversarial\nexample correctly classified by a classifierfθ, i.e. argmaxjfθ(x′)j =y′, then there existsT, such\nthat\n                         ∥fθ(x′;T)−P(Y′|x′)∥TV≤∥fθ(x′)−P(Y′|x′)∥TV.",
+    "page": 7,
+    "start": 2587,
+    "end": 3041
+  },
+  {
+    "kind": "statement",
+    "text": "Theorem 5.2 (Interpolation can further reduce the distribution mismatch).  Letx′ be an adver-\nsarial example incorrectly classified by a classifierfθ, i.e.  argmaxjfθ(x′;T)j̸=y′.  Assume\nmaxjP(Y′ =j|x′)≥ 1/2, then there exists an interpolation ratioλ, such that\n                      ∥fθ(x′;T,λ)−P(Y′|x′)∥TV≤∥fθ(x′;T)−P(Y′|x′)∥TV,\nwherefθ(x′;T,λ) =λ·fθ(x′;T)+(1−λ)·P(˜Y′|x′).",
+    "page": 7,
+    "start": 3303,
+    "end": 3678
+  },
+  {
+    "kind": "statement",
+    "text": "Proof in Assumption 3.1.      Here we prove that if there no label error in the clean dataset, then\nP(˜Y|x) =P(Y|x).",
+    "page": 14,
+    "start": 33,
+    "end": 149
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. First, we note that",
+    "page": 14,
+    "start": 153,
+    "end": 179
+  },
+  {
+    "kind": "statement",
+    "text": "Proof of Lemma 4.1.",
+    "page": 14,
+    "start": 1358,
+    "end": 1377
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. Forsimplicity,weconsidertheadversarialperturbationgeneratedbyFGSM.Otheradversarial\nperturbation can be viewed as a Taylor series of such perturbation.",
+    "page": 14,
+    "start": 1381,
+    "end": 1538
+  },
+  {
+    "kind": "statement",
+    "text": "Proof of Lemma 4.2.",
+    "page": 15,
+    "start": 1681,
+    "end": 1700
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. First, we show that the expectation of the label error is lower bounded by the mismatch\nbetween the true label distribution and the assigned label distribution.\n          ∥P(˜Y|x)−P(Y|x)∥TV = 1         X    |P(˜Y =j|x)−P(Y =j|x)|\n                                       2   j\n                                    = 1  X    |P(˜Y =j,Y =j|x)+P(˜Y =j,Y̸=j|x)\n                                       2   j",
+    "page": 15,
+    "start": 1702,
+    "end": 2107
+  },
+  {
+    "kind": "statement",
+    "text": "Proof of Theorem 4.3.",
+    "page": 16,
+    "start": 1101,
+    "end": 1122
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. First, by the fact thatP(˜Y′|x′) =P(˜Y|x) andP(˜Y|x) =P(Y|x) we haveP(˜Y′|x′) =\nP(Y|x).\nTherefore, apply Lemma 4.2 to an adversarially augmented training set we have with probability\n1−δ,                                                                   r\n                       pe(D′)≥Ex∥P(˜Y′|x′)−P(Y′|x′)∥TV−                    1\n                                                                     r    2N log 2δ\n                                ≥Ex∥P(Y|x)−P(Y′|x′)∥TV−                  1\n                                                                        2N log 2δ.\nFurther, apply Lemma 4.1 and the definition of data quality, we have with probability1−δ,\n                                                                       r   1\n                       pe(D′)≥ε2(1−Exf(x)y)σmL−ε24σM−                     2N log 2δ\n                                                                   r   1\n                               ≥ε2(1−q(D))σmL−ε24σM−                  2N log 2δ.",
+    "page": 16,
+    "start": 1124,
+    "end": 2110
+  },
+  {
+    "kind": "statement",
+    "text": "Proof of Lemma 4.4.",
+    "page": 16,
+    "start": 2144,
+    "end": 2163
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. LetD = (x,y) be the adversarially augmented training set. LetS ={x : (x,y)∈D} be\nthe collection of all training inputs. First we note that the set of all training inputs can be grouped\nintoseveralsubsetssuchthattheinputsineachsubsetpossesssimilartruelabeldistribution. More\nformally, LetC ={¯xj}Nρεj=1 be anρε-external covering ofS with minimum cardinality, namely\nS⊆Sx∈C{x′|∥x′−x∥≤ρε}, wherewe refer ¯xj as thecovering center, andNρε is thecovering\nnumber.\nLet{Sj}Nρεj=1 be any disjoint partition ofS such thatSj⊆{x′|∥x′− ¯xj∥≤ρε}.  We show that\nSj attains a property that the true label distribution of any inputx in this subset will not be too",
+    "page": 16,
+    "start": 2165,
+    "end": 2818
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. First, sincex∈Sj, wehave∥x− ¯xj∥1≤ρε, whichimplies∥p(x)−p(¯xj)∥1≤Lρε by the\nlocally Lipschitz continuity ofp. Then for anyx,x′∈Sj, we will have∥p(x)−p(x′)∥≤ 2Lρε by\nthe triangle inequality. LetNS =|Sj|. Therefore,\n                            \r\r\r\r\r\rp(x)−  1              \r\r\r\r\r\r1\n                                             X    p(x)      ≤ 2NS−1\n                                       NS   x∈Sj                   NS Lρε≤ 2Lρε.                               (17)",
+    "page": 17,
+    "start": 696,
+    "end": 1164
+  },
+  {
+    "kind": "statement",
+    "text": "Lemma A.2 (Concentration inequality ofthe sample mean).  LetS be a setofx with cardinalityN.\nLet¯y =N−1Px∈S1y be the sample mean. Then for anyp-norm∥·∥ and anyε> 0, we have with\nprobability1−δ,                                               r\n                                          ∥¯y−E[¯y]∥1≤           2K\n                                                                  N  log 2δ                                                  (19)",
+    "page": 17,
+    "start": 1453,
+    "end": 1892
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. Note that¯y obeys a multinomial distribution, i.e. ¯y∼N−1multinomial(N,E[¯y]). This",
+    "page": 17,
+    "start": 1894,
+    "end": 1984
+  },
+  {
+    "kind": "statement",
+    "text": "lemma is thus the classicresult on the concentration properties of multinomial distributionbased on\nℓ1 norm Weissman et al. (2003); Qian et al. (2020).",
+    "page": 17,
+    "start": 1985,
+    "end": 2136
+  },
+  {
+    "kind": "statement",
+    "text": "Lemma A.3.  Let ¯y =|Sj|−1Px∈Sj1y.  The minimum of the problem (22) is achieved only if\nfθ(¯xj) =¯yj(1+KLθρε)−Lθρε.",
+    "page": 18,
+    "start": 661,
+    "end": 776
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. We note that since the loss function we choose is strongly convex, to minimize the em-\npirical risk, the prediction of any inputx must be as close to the one-hot labeling as possible.\nTherefore the problem (22) can be formulated into a vector minimization where we can employ\nKarush–Kuhn–Tucker (KKT) theorem to find the necessary conditions of the minimizer.\nLetpi :=fθ(xi) and ˜ε =Lρε for simplicity. We rephrase the problem (22) as",
+    "page": 18,
+    "start": 778,
+    "end": 1219
+  },
+  {
+    "kind": "statement",
+    "text": "Lemma A.4.  Let{Sj}Nρεj=1 be a disjoint partition of the entire training setS. DenoteS(x) as the\npartition that includesx. LetN(x) =|S(x)| andN =|S|. Then for anyκ≥ 1,\n                                                       \f\f\f\f≥\n                                x|N(x)≥ NκNρε                  1− 1κ +    1κNρε     N.                                 (33)",
+    "page": 19,
+    "start": 2882,
+    "end": 3234
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. Wenotethat theproblem isto show theminimum numberofx suchthatN(x)≥N/(κNρε).\nThisisequivalenttofindthemaximumnumberofxsuchthatN(x)≤N/(κNρε). Sinceweonlyhave\nNρε subsets,themaximumcanbeattainedonlyifforNρε−1subsetsS,|S| =N/(κNρε). Otherwise,\nif for any one of these subsets|S|<N/(κNρε), then it is always feasible to let|S| =N/(κNρε)\nand the maximum increases. Similarly, if thenumber of such subsets is less thanNρε−1, then it is\nalwaysfeasibletoletanothersubsetsubjectto|S| =N/(κNρε)andthemaximumincreases. Wecan\nthen conclude that at mostN(Nρε−1)/(κNρε) inputs can have the propertyN(x)≤N/(κNρε).",
+    "page": 20,
+    "start": 0,
+    "end": 604
+  },
+  {
+    "kind": "statement",
+    "text": "Lemma A.4 to (32), and use the fact that∥·∥TV =∥·∥1/2 for category distributions, we then arrive\nat Lemma 4.4.",
+    "page": 20,
+    "start": 872,
+    "end": 982
+  },
+  {
+    "kind": "statement",
+    "text": "Proof of Theorem 4.5.",
+    "page": 20,
+    "start": 986,
+    "end": 1007
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. First, weshowthat adversarial perturbation generated by a realisticclassifier can changeits\npredictivedistribution. ConsideringadversarialperturbationbasedonFGSMandcross-entropyloss,\nnamelyx′ =x−ε∥∇fθ(x)y∥−1∇fθ(x)y, we can obtain a result similar to Lemma 4.1.",
+    "page": 20,
+    "start": 1009,
+    "end": 1276
+  },
+  {
+    "kind": "statement",
+    "text": "Lemma A.5.  Assumefθ(x)y isLθ-locally Lipschitz aroundx with bounded Hessian. Letσm =\ninfz∈Bε(x)σmin(∇2fθ(z)y)> 0andσM = supz∈Bε(x)σmax(∇2fθ(z)y)> 0. Hereσmin andσmax\ndenote the minimum and maximum eigenvalues of the Hessian, respectively. We then have",
+    "page": 20,
+    "start": 1278,
+    "end": 1530
+  },
+  {
+    "kind": "statement",
+    "text": "Lemma 4.4, we have with probability1−2δ,\n        ∥P(Y|x)−P(Y′|x′)∥TV\n     ≥∥fθ(x)−fθ(x′)∥TV−(∥fθ(x)−P(Y|x)∥TV+∥fθ(x′)−P(Y′|x′)∥TV)r\n                                             2κNρεK                3\n     ≥ε2(1−fθ(x)y)σmLθ−ε24σM−                    N      log 2δ−       2− 1K     Lθ +L      2ρε          (35)\n                                       3                                      r2κNρεK\n     =ε    (1−fθ(x)y)σm2Lθ−2ρ            2− 1K      Lθ +L       −ε2σM4−             N      log 2δ.",
+    "page": 20,
+    "start": 1936,
+    "end": 2430
+  },
+  {
+    "kind": "statement",
+    "text": "Proof of Theorem 5.1.",
+    "page": 21,
+    "start": 27,
+    "end": 48
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. Letj∗   =   argmaxP(Y′   = j|x′)  and  thusP(Y′   = j∗|x′)∈   [1/c,1].     Let\ng(T) :=f(x′;θ,T)j∗, which is a continuous function defined on [0,∞].  The conditionj∗ =\nargmaxjf(x′;θ,T)j ensuresthatg(T)∈ [1/c,1],wherecisthenumberofclasses. Bytheinterme-\ndiate value theorem, there existsT∗, such thatg(T∗) =P(Y′ =j∗|x′).\nLetT =T∗, we have\n                                              X\n          ∥f(x′;θ,T)−P(Y′|x′)∥TV = 12              |f(x′;θ,T)j−P(Y′ =j|x′)|\n                                                j\n                                         = 1    X    |f(x′;θ,T)j−P(Y′ =j|x′)|\n                                            2 j,j̸=j∗\n                                                                                           \n                                         ≤ 12 X       f(x′;θ,T)j +X         P(Y′ =j|x′)",
+    "page": 21,
+    "start": 50,
+    "end": 883
+  },
+  {
+    "kind": "statement",
+    "text": "Proof of Theorem 5.2.",
+    "page": 21,
+    "start": 1637,
+    "end": 1658
+  },
+  {
+    "kind": "statement",
+    "text": "Lemma A.6.  Letx′ be anexample incorrectly classified bya classifierf in termsof the true label\ndistributionP(Y′ =j|x′), namely\n                                     argmax\n                                         j   f(x′;θ,T)j̸=j∗,\nwherej∗ = argmaxjP(Y′ =j|x′). AssumeP(Y′ =j∗|x′)≥ 1/2, then",
+    "page": 21,
+    "start": 1659,
+    "end": 1951
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. We  prove  it  by  contradiction.    Assumef(x′;θ,T)j∗ > P(Y′  = j∗|x′),  we  have\nf(x′;θ,T)j∗>P(Y′ =j∗|x′)≥ 1/2. Therefore,",
+    "page": 21,
+    "start": 2015,
+    "end": 2146
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. First letP(Y′|x′) =P(y|x)≈         1 (y). Letj∗ = argmaxjP(Y′ =j|x′). By LemmaA.6 we\nhavef(x′;θ,T)j∗≤P(Y′∗ =j∗|x′)≤ 1. Then there existsλ∗> 0, such thatλ∗·f(x′;θ,T)j∗ +\n(1−λ∗) =P(Y′ =j∗|x′) by the intermediate value theorem.\nLetλ =λ∗, we haveh                                                                                  i\n  2  ∥λ·f(x′;θ,T)+(1−λ)·P(˜Y′|x′)−P(Y′|x′)∥TV−∥f(x′;θ,T)−P(Y′|x′)∥TV\n=2[∥λ·f(x′;θ,T)+(1−λ)·       1 (y)−P(Y′|x′)∥TV−∥f(x′;θ,T)−P(Y′|x′)∥TV]\n=X     |λ·f(x′;θ,T)j +(1−λ)·1(j =y)−P(Y′ =j|x′)|−X                         |f(x′;θ,T)j−P(Y′ =j|x′)|\n    j                                                                    j\n=X     |λ·f(x′;θ,T)j +(1−λ)·1(j =Y)−P(Y′ =j|x′)|−X                          |f(x′;θ,T)j−P(Y′ =j|x′)|\n    j                                                                    j\n=X       |λ·f(x′;θ,T)j−P(Y′ =j|x′)|−X                    |f(x′;θ,T)j−P(Y′ =j|x′)|−|f(x′;θ,T)j∗−P(Y′ =j∗|x′)|\n  j,j̸=j∗                                         j,j̸=j∗\n≤X       |λ·f(x′;θ,T)j−f(x′;θ,T)j|−|f(x′;θ,T)j∗−P(Y′ =j∗|x′)|\n  j,j̸=j∗\n=X       [f(x′;θ,T)j−λ·f(x′;θ,T)j]−[P(Y′ =j∗|x′)−f(x′;θ,T)j∗]\n  j,j̸=j∗\n=X       [f(x′;θ,T)j−λ·f(x′;θ,T)j]−[λ·f(x′;θ,T)j∗ +(1−λ)−f(x′;θ,T)j∗]\n  j,j̸=j∗\n=X     f(x′;θ,T)j−λXf(x′;θ,T)j−(1−λ)\n    j                      j\n=0.",
+    "page": 22,
+    "start": 0,
+    "end": 1285
+  }
+]

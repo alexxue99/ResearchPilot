@@ -1,0 +1,44 @@
+[
+  {
+    "kind": "statement",
+    "text": "Lemma 2.1 (The PAC-Bayesian Generalization Bound (McAllester,1999b))                              .  For any real ∆∈\n(0,1), with probability at least1−∆, over the draw of the training datasetS, the expected risk for\nall distributionsQ satisﬁes\n                                                   √  1\n                             L(Q)≤ ˆL(Q)+4            m[KL(Q‖P)+ln(2m∆ )],",
+    "page": 3,
+    "start": 1299,
+    "end": 1673
+  },
+  {
+    "kind": "statement",
+    "text": "Theorem 2.2(The GeneralizationAdvantage ofANV). Suppose themodelM(θ⋆) achieves(b,δ)-\nneural variability atθ⋆, and Assumption1holds. Then, for any real                    ∆∈ (0,1), with probability\nat least1−∆, over the draw of the training datasetS, the expected risk for all distributionsQnv\nsatisﬁes                                        √     [                            ]\n                       L(Qnv)≤ ˆL(θ⋆)+4            1    KL(Qnv‖P)+ln(2m              +δ,\n                                                   m                          ∆ )\n                                                                              [        )+b2+θ⋆2          ]\nwhereN is the number of model weights andKL(Qnv‖P) =∑Ni=1                      log(σ             i\n                                                                                     b       2σ2 − 12",
+    "page": 3,
+    "start": 2415,
+    "end": 3271
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. We consider a distributionQnv over predictors with weights of the formθ+ϵ, whereθ is\ndrawnfromthedistributionQandϵ∼N(0,b2I)isarandomvariableindicatingweightperturbation.\nSuppose the modelM(θ) achieves (b,δ(θ))-neural variability, which follows the notation of the\nexpected sharpness used byNeyshabur et al.(2017).  We start our theoretical analysis based on\nEquation 7ofNeyshabur et al.(2017). We can boundthe expected riskover the distribution      Qnv as:√\n              L(Qnv)≤ˆL(Q)+[ˆL(QNV)− ˆL(Q)]+4                      1\n                                          √                       m[KL(Qnv‖P)+ln(2m∆ )],             (12)\n                           = ˆL(Q)+4         1\n                                             m[KL(Qnv‖P)+ln(2m∆ )]+Eθ∼Q[δ(θ)].                   (13)\nWeemphasisthatthisboundholdsforanydistributionQ(anymethodofchoosingθ dependenton\nthe training dataset) and any priorP. We use a very special distributionQ:Pr(θ =θ⋆) = 1. Thus\nwe can bound the expected risk over the distributionQnv as√\n                    L(Qnv)≤ ˆL(θ⋆)+4            1\n                                                m[KL(θ⋆+ϵ‖P)+ln(2m∆ )]+δ(θ⋆).                     (14)\nThe Kullback-Leibler divergence of the two Gaussians can be written as\n                                                 N∑ [     (σ  )                     ]\n                           KL(θ⋆+ϵ‖P) =               log   b    +b2+θ⋆2i2σ2 − 12     ,                               (15)\n                                                i=1\nwhereN is the number of the model weights. Finally, we havevuu√\n                                           [N∑   [     (σ  )                    ]              ]\n           L(Qnv)≤ ˆL(θ⋆)+4             1          log       +b2+θ⋆2i             +ln(2m         +δ.         (16)\n                                       m     i=1         b         2σ2 − 12               ∆ )",
+    "page": 14,
+    "start": 1697,
+    "end": 3575
+  },
+  {
+    "kind": "statement",
+    "text": "Lemma B.1 ((Xu and Raginsky,2017))             .  SupposeL(θ,(x,y)) is the loss function of the model\nM(θ), suchthatL(θ,(x,y)) isσ-sub-gaussian random variable foreachθ. Letthe trainingdataset\nS ={(x(i),y(i))}mi=1 and the test sample ¯S = (¯x,¯y) be sampled from the data distributionS\nindependently, andθ be the model weights learned from the algorithmA(θ|S). Then the expected\ngeneralization gap meets the following property:               √\n                               E[L(θ,(¯x,¯y))−L(θ,S)]≤            2σ2\n                                                                   mI(θ;S),\nwhereI(θ;S) denotes the mutual information between the parametersθ and the training datasetS.",
+    "page": 15,
+    "start": 536,
+    "end": 1219
+  },
+  {
+    "kind": "statement",
+    "text": "Theorem B.2. Suppose the conditionsof LemmaB.1hold, and themodel    M(θ) achieves(b,δ)-NV\non the training datasetS. Then the expected generalization gap of the modelM(θ) satisﬁes:√\n                        E[L(θ+ϵ,(¯x,¯y))−L(θ,S)]≤               2σ2\n                                                                 mI(θ+ϵ;S)+δ,\nwhereϵ∼N(0,b2I) is Gaussian noise, andδ only depends on the training loss landscape.",
+    "page": 15,
+    "start": 1220,
+    "end": 1631
+  },
+  {
+    "kind": "statement",
+    "text": "Proof. Given the modelM(θ), we can easily obtain a new modelM(θ +ϵ) close toM(θ) by\ninjectinga Gaussiannoiseϵ∼N(0,b2I). ByLemmaB.1,we havetheexpected generalizationgap\nofM(θ+ϵ) meets[                                                       ]    √\n                                            m∑                                 2σ2\n              E   L(θ+ϵ,(¯x,¯y))− 1m           L(θ+ϵ,(x(i),y(i)))        ≤      mI(θ+ϵ;S).             (17)\n                                           i=1\nBased on the deﬁnition of (b,δ)-NV, we have[                                        ]\n                        1   m∑                                m∑\n                   E   m       L(θ+ϵ,(x(i),y(i)))− 1m             L(θ,(x(i),y(i)))     ≤δ.                    (18)\n                           i=1                               i=1\nThus, we obtain[                                                  ]    √\n                                            m∑                            2σ2\n              E   L(θ+ϵ,(¯x,¯y))− 1m           L(θ,(x(i),y(i)))     ≤      mI(θ+ϵ;S)+δ.             (19)\n                                           i=1",
+    "page": 15,
+    "start": 1633,
+    "end": 2749
+  }
+]
