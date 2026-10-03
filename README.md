@@ -16,7 +16,7 @@ The frontend includes three saved investigations. Reviewers can inspect the conj
 
 These are recorded investigations, including their limitations and inconclusive outcomes. A completed run does not mean the conjecture was confirmed. The label-noise demo distinguishes signed and absolute accuracy gaps because training and test labels have different noise levels.
 
-Browse the demo gallery on the Vercel-hosted ResearchPilot website. The gallery is read-only and requires no installation, backend, or API key. Direct demo links use `/?demo=double-descent`, `/?demo=spurious-correlations`, and `/?demo=overfitting-noise`.
+Browse the demo gallery on the Vercel-hosted ResearchPilot website [https://research-pilot-psi.vercel.app/](https://research-pilot-psi.vercel.app/). The gallery is read-only and requires no installation, backend, or API key. Direct demo links use `/?demo=double-descent`, `/?demo=spurious-correlations`, and `/?demo=overfitting-noise`.
 
 To browse the gallery locally or run your own investigations, follow the [local setup guide](frontend/public/demos/local-setup.md).
 
