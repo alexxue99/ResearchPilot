@@ -16,8 +16,9 @@ import { DemoGallery, type DemoEntry } from './demo-gallery';
 import { demoAssetUrl, demoReportHref, validateDemoState } from './demo-assets.mjs';
 import { workspaceLocation, rememberInvestigation, recentInvestigationId } from './workspace-navigation.mjs';
 
-const API = process.env.NEXT_PUBLIC_RESEARCHPILOT_API ?? 'http://localhost:8000';
-const DEMO_ONLY = process.env.NEXT_PUBLIC_RESEARCHPILOT_DEMO_ONLY === 'true' || !process.env.NEXT_PUBLIC_RESEARCHPILOT_API;
+const configuredApi = process.env.NEXT_PUBLIC_RESEARCHPILOT_API?.trim();
+const API = configuredApi || 'http://localhost:8000';
+const DEMO_ONLY = process.env.NEXT_PUBLIC_RESEARCHPILOT_DEMO_ONLY === 'true' || !configuredApi;
 const tabs = ['Investigation', 'Sources', 'Experiments', 'Report', 'Trace'] as const;
 type Tab = typeof tabs[number];
 type DeploymentQuota = {enabled: boolean; mode?: string; experiments_allowed?: boolean; remaining?: number; limit?: number; resets_at?: number};
