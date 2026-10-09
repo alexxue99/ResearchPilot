@@ -14,8 +14,6 @@ The frontend includes three saved investigations. Reviewers can inspect the conj
 | Spurious correlations | A predictive shortcut improves in-distribution accuracy but harms generalization when its correlation reverses. | [Report](frontend/public/demos/spurious-correlations/report.pdf) |
 | Overfitting under label noise | Increasing training-set size narrows the gap between noisy-label training accuracy and clean test accuracy. | [Report](frontend/public/demos/overfitting-noise/report.pdf) |
 
-These are recorded investigations, including their limitations and inconclusive outcomes. A completed run does not mean the conjecture was confirmed. The label-noise demo distinguishes signed and absolute accuracy gaps because training and test labels have different noise levels.
-
 Browse the demo gallery on the Vercel-hosted ResearchPilot website [https://research-pilot-psi.vercel.app/](https://research-pilot-psi.vercel.app/). The gallery is read-only and requires no installation, backend, or API key. Direct demo links use `/?demo=double-descent`, `/?demo=spurious-correlations`, and `/?demo=overfitting-noise`.
 
 To browse the gallery locally or run your own investigations, follow the [local setup guide](frontend/public/demos/local-setup.md).
