@@ -1,4 +1,4 @@
-# ResearchPilot
+﻿# ResearchPilot
 
 **An inspectable research assistant for mathematical and machine learning conjectures.** ResearchPilot connects literature review, paper reading, controlled experiments, and evidence synthesis. Reports link claims to source passages and recorded measurements, and explain when the evidence is insufficient.
 
