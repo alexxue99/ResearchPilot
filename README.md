@@ -1,12 +1,14 @@
 ﻿# ResearchPilot
 
-**An inspectable research assistant for mathematical and machine learning conjectures.** ResearchPilot connects literature review, paper reading, controlled experiments, and evidence synthesis. Reports link claims to source passages and recorded measurements, and explain when the evidence is insufficient.
+ResearchPilot is a **research assistant for mathematical and machine learning conjectures.** The agent connects literature review, paper reading, and controlled experiments to synthesize a judgement on user provided conjectures. Users can then inspect the generated report, where every step in the process is detailed. Relevant passages from literature are highlighted, and all experimental details are provided.
+
+The publc [website](https://research-pilot-psi.vercel.app/) is only a demo gallery showcase, so public functionality is limited. Details on the demo gallery are [below](#explore-the-demos). In order to use the agent, users must provide their own API key and set-up their own Docker environment. Check the [local setup guide](frontend/public/demos/local-setup.md).
 
 ![ResearchPilot interface](frontend/public/og.png)
 
-## Explore the demos
+## Explore the demos 
 
-Browse the [demo gallery](https://research-pilot-psi.vercel.app/) to inspect three saved investigations, including their conjectures, sources, generated Python, plots, reports, and traces. The gallery is read-only and requires no installation, backend, or API key.
+Browse the [demo gallery](https://research-pilot-psi.vercel.app/) to inspect three saved investigations, including their conjectures, sources, generated experiment Python code, plots, reports, and traces. The gallery is read-only and requires no installation, backend, or API key.
 
 | Demo | Conjecture being tested | Saved report |
 | --- | --- | --- |
@@ -14,9 +16,7 @@ Browse the [demo gallery](https://research-pilot-psi.vercel.app/) to inspect thr
 | [Spurious correlations](https://research-pilot-psi.vercel.app/?demo=spurious-correlations) | A predictive shortcut improves in-distribution accuracy but harms generalization when its correlation reverses. | [Report](frontend/public/demos/spurious-correlations/report.pdf) |
 | [Overfitting under label noise](https://research-pilot-psi.vercel.app/?demo=overfitting-noise) | Increasing training-set size narrows the gap between noisy-label training accuracy and clean test accuracy. | [Report](frontend/public/demos/overfitting-noise/report.pdf) |
 
-These are recorded investigations, including their limitations and inconclusive outcomes.
-
-The two pictures below are screenshots of the Experiments tab from the double descent demo.
+Below are two snapshots of the double descent demo.
 ![Experimental results from the double-descent demo, plotting test MSE against feature count for minimum-norm least squares and three ridge strengths](docs/images/demo-results.svg)
 
 *Experimental results for the double descent demo.*
@@ -27,7 +27,7 @@ The two pictures below are screenshots of the Experiments tab from the double de
 
 ## How investigations work
 
-Enter a precisely scoped true/false conjecture and optionally attach papers before starting. The pipeline:
+After the user enters a true/false conjecture and optionally attaches papers for context, the pipeline:
 
 1. Interprets the statement and its assumptions.
 2. Reasons about the conjecture, searches for corroborating sources, and retrieves additional scholarly literature.
@@ -35,7 +35,7 @@ Enter a precisely scoped true/false conjecture and optionally attach papers befo
 4. Designs a finite numerical test, generates Python and visualization code, and executes it when Docker is configured.
 5. Synthesizes the recorded evidence into a qualitative assessment and an inspectable report.
 
-Missing papers, invalid model responses, code-generation failures, and execution failures remain visible in the trace. An attached paper can define a method without supplying evidence for the conjecture. Numerical experiments establish results in the tested setting; they do not prove universal mathematical claims.
+Missing papers, invalid model responses, code-generation failures, and execution failures remain visible in the trace. The code can be downloaded or modified by the user directly in the Experiments tab. If the user then reruns the code through the provided "rerun code" feature, the agent will automatically resynthesize the collected evidence and regenerate the report.
 
 ```mermaid
 flowchart LR
@@ -52,11 +52,7 @@ flowchart LR
 
 The workflow lives in [conjecture_pipeline.py](researchpilot/conjecture_pipeline.py). See the [workflow guide](docs/CONJECTURE_WORKFLOW.md) for stage contracts and the [security model](docs/SECURITY.md) for execution boundaries.
 
-## Local setup
-
-To browse the gallery locally or run your own investigations, follow the [local setup guide](frontend/public/demos/local-setup.md). It covers installation, Docker preparation, API keys, deployment modes, and starting the backend and frontend.
-
-## Save and publish a demo
+<!-- ## Save and publish a demo
 
 Runs persist locally in `.researchpilot/`, which is ignored by Git. To preserve a result, use **Report → Save demo ZIP**, or:
 
@@ -72,7 +68,7 @@ Demo export includes a typeset `report.pdf` and requires XeLaTeX with the TeX Gy
 
 Existing ZIP filenames and gallery slugs are protected from overwriting by default. Use `publish-demo --replace` to refresh an existing gallery entry. See the [demo guide](demos/README.md) for the snapshot format and workflow.
 
-For Vercel, select `frontend` as the project root, use the Next.js preset, and set `NEXT_PUBLIC_RESEARCHPILOT_DEMO_ONLY=true` before building. Set `NEXT_PUBLIC_SITE_URL` to the public site URL. The curated gallery works without a deployed backend.
+For Vercel, select `frontend` as the project root, use the Next.js preset, and set `NEXT_PUBLIC_RESEARCHPILOT_DEMO_ONLY=true` before building. Set `NEXT_PUBLIC_SITE_URL` to the public site URL. The curated gallery works without a deployed backend. -->
 
 ## Verification
 
